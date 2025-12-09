@@ -252,6 +252,65 @@ footer {
   margin-top: auto;
 }
 
+
+/* === FORMULARIO DE CONTACTO === */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.contact-form label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: -0.5rem;
+    color: var(--text);
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.1);
+    background-color: #fff;
+}
+
+.contact-form button {
+    background-color: var(--accent);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.contact-form button:hover {
+    background-color: #0069d9; /* Un azul un poco más oscuro */
+    transform: translateY(-2px);
+}
+
+
+
+
+
+
 /* === MENÚ MÓVIL (MEDIA QUERY) === */
 .menu-toggle {
   display: none;
