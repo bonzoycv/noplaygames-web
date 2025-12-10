@@ -4,175 +4,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Aprende a usar fzf, la herramienta de búsqueda difusa para terminal. Mejora tu productividad en Fedora y Arch Linux con estos alias y trucos.">
-  <title>Introducción a fzf: Búsquedas rápidas en Linux – No Play Games</title>
-  <link rel="stylesheet" href="/style.css" />
-  <link rel="icon" type="image/x-icon" href="/sources/favicon-32x32.png">
+  <title>Introducción a fzf: Búsquedas rápidas - No Play Games</title>
+  <meta name="description" content="Cómo empecé a usar fzf, la herramienta de búsqueda difusa, para mejorar mi productividad en Fedora y Arch Linux.">
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="icon" type="image/x-icon" href="../../sources/favicon-32x32.png">
+
+  <meta property="og:title" content="Introducción a fzf: Búsquedas rápidas" />
+  <meta property="og:description" content="Mis primeros pasos con fzf en el terminal de Linux." />
+  <meta property="og:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
+  <meta property="og:url" content="https://www.noplaygames.dev/noplay/post/fzf.html" />
+  <meta property="og:type" content="article" />
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Introducción a fzf" />
+  <meta name="twitter:description" content="Mis primeros pasos con fzf en el terminal de Linux." />
+  <meta name="twitter:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
 </head>
 
 <body>
   <header>
     <div id="logo">
-      <a href="/index.html"><img src="/sources/no_play_logo.webp" alt="Logo de No Play Games" /></a>No Play Games
+      <a href="/index.html"><img src="../../sources/no_play_logo.webp" alt="Logo de No Play Games" /></a>No Play Games
     </div>
-
 
     <nav>
       <div class="menu-toggle" id="mobile-menu">&#9776;</div>
       <ul class="nav-links" id="nav-links">
         <li><a href="/index.html">Inicio</a></li>
-
         <li><a href="/noplay/post/linux.html">Artículos</a></li>
-
-        <li><a href="#">Proyectos</a></li>
-
+        <li><a href="/noplay/proyectos.html">Proyectos</a></li> 
         <li><a href="/noplay/perfil.html">Perfil</a></li>
-       <li><a href="/noplay/contacto.html">Contacto</a></li>
-
-        <li>
-          <a href="https://github.com/bonzoycv" target="_blank" class="github-link" title="Ver mi código en GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-            </svg>
-          </a>
-        </li>
+        <li><a href="/noplay/contacto.html">Contacto</a></li>
+        
+        <div class="social-icons" style="margin-top: 0;">
+            <a href="https://github.com/bonzoycv" target="_blank" class="social-link" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            
+        </div>
       </ul>
     </nav>
-
   </header>
 
   <main>
-    <section class="blog-entry">
-      <h1>Introducción a <strong>fzf</strong> en Archlinux y Fedora (mis sistemas de uso diario)</h1>
-      <span class="date">3 de diciembre, 2025</span>
+    <article class="blog-entry">
+      <h1>Introducción a fzf en Arch y Fedora (Mis sistemas diarios)</h1>
+      <span class="date">2025</span>
 
       <p>
-        Hace poco "descubrí" y quedé enganchado con <strong>fzf</strong> que es una herramienta de
-        búsqueda en el terminal, que te permite buscar archivos, carpetas y comandos del historial, de forma
-        rápida. Solo necesitas escribir una parte del texto que buscas y aparece la lista de archivos y/o
-        carpetas que hagan match con tu criterio de búsqueda.
+        Hace poco "descubrí" y quedé enganchado con <strong>fzf</strong>. Es una herramienta de búsqueda difusa en el terminal que me permite encontrar archivos, carpetas y comandos del historial de forma instantánea.
+      </p>
+      <p>
+        Solo necesito escribir una parte del texto que busco y aparece la lista de coincidencias en tiempo real.
       </p>
 
       <h3>Instalación</h3>
       <p><strong>En Arch Linux:</strong></p>
       <pre><code>sudo pacman -S fzf</code></pre>
       <br>
-      <p><strong>En Fedora 42:</strong></p>
+      <p><strong>En Fedora:</strong></p>
       <pre><code>sudo dnf install fzf</code></pre>
       <br>
 
-      <h3> Ejemplos básicos</h3>
+      <h3>Mis usos básicos</h3>
       <br>
       <ul class="no-bullets">
-        <li><code>fzf</code> — lista archivos desde el directorio actual y permite buscarlos.</li>
-        <li><code>ls | fzf</code> — búsqueda interactiva entre archivos listados.</li>
-        <li><code>history | fzf</code> — busca entre comandos anteriores.</li>
-
+        <li><code>fzf</code> — Lista archivos desde el directorio actual y permite buscarlos.</li>
+        <li><code>ls | fzf</code> — Búsqueda interactiva entre archivos listados.</li>
+        <li><code>history | fzf</code> — Busca entre comandos anteriores (mi favorito).</li>
       </ul>
-
-      <!--<h3>Alias útiles tras seleccionarlos con fzf</h3>-->
-      <!--<br>-->
-
-      <!--<table>-->
-      <!--  <thead>-->
-      <!--    <tr>-->
-      <!--      <th>Alias</th>-->
-      <!--      <th>¿Qué hace?</th>-->
-      <!--      <th>¿Cuándo usarlo?</th>-->
-      <!--    </tr>-->
-      <!--  </thead>-->
-      <!--  <tbody>-->
-      <!--    <tr>-->
-      <!--      <td><code>fopen</code></td>-->
-      <!--      <td>Abre archivos con nano</td>-->
-      <!--      <td>Editar rápidamente desde la terminal</td>-->
-      <!--    </tr>-->
-      <!--    <tr>-->
-      <!--      <td><code>fcd</code></td>-->
-      <!--      <td>Cambia de directorio con selección interactiva</td>-->
-      <!--      <td>Proyectos con muchas carpetas</td>-->
-      <!--    </tr>-->
-      <!--    <tr>-->
-      <!--      <td><code>fedit</code></td>-->
-      <!--      <td>Muestra contenido antes de editar</td>-->
-      <!--      <td>Verificar qué vas a editar</td>-->
-      <!--    </tr>-->
-      <!--    <tr>-->
-      <!--      <td><code>fh</code></td>-->
-      <!--      <td>Busca en el historial de comandos</td>-->
-      <!--      <td>Recuperar comandos sin recordar</td>-->
-      <!--    </tr>-->
-      <!--    <tr>-->
-      <!--      <td><code>fgrep</code></td>-->
-      <!--      <td>Busca texto dentro de archivos</td>-->
-      <!--      <td>Encontrar líneas o fragmentos clave</td>-->
-      <!--    </tr>-->
-      <!--    <tr>-->
-      <!--      <td><code>fkill</code></td>-->
-      <!--      <td>Muestra procesos y permite matarlos</td>-->
-      <!--      <td>Terminar procesos colgados</td>-->
-      <!--    </tr>-->
-      <!--    <tr>-->
-      <!--      <td><code>fkdir</code></td>-->
-      <!--      <td>Abre carpetas con el explorador gráfico</td>-->
-      <!--      <td>Acceder visualmente a carpetas desde la terminal</td>-->
-      <!--    </tr>-->
-      <!--  </tbody>-->
-      <!--</table>-->
 
       <br>
       <p>
-        <strong>fzf</strong> me gusta porque es minimalista, fácil de usar y adictivo una vez que te acostumbras. Pronto
-        compartiré otras herramientas que utilizo cada día al usar el terminal.
+        <strong>fzf</strong> me gusta porque es minimalista, fácil de usar y adictivo una vez que te acostumbras.
+      </p>
+      
+      <br>
+      <hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
+
+      <p style="font-style: italic; font-size: 0.9rem; color: #7f8c8d;">
+        <strong>Nota:</strong> He creado artículos separados para mis alias favoritos como <a href="/noplay/post/fcd-alias.html"><strong>fcd</strong></a> y <a href="/noplay/post/fopen-alias.html"><strong>fopen</strong></a>. Puedes encontrarlos en la sección de artículos.
       </p>
 
-            <script src="https://giscus.app/client.js"
+      <script src="https://giscus.app/client.js"
         data-repo="bonzoycv/noplaygames-comentarios"
-        data-repo-id="R_kgDOQlhrMQ"
+        data-repo-id="R_kgDOQlhrmQ"
         data-category="General"
-        data-category-id="DIC_kwDOQlhrMc4CzlNQ"
+        data-category-id="DIC_kwDOQlhrmc4CzlNQ"
         data-mapping="url"
         data-strict="0"
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="noborder_light"
         data-lang="es"
         crossorigin="anonymous"
         async>
-</script>
+      </script>
 
-      <br>
-      <hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
-
-      <p style="font-style: italic; font-size: 0.9rem; color: #7f8c8d;">
-        <strong>Nota:</strong> Próximamente mostrare algunos de los alias mas interesantes y, aunque no los uso con
-        mucha frecuencia, iré
-        compartiéndolos en futuros artículos.
-      </p>
-    </section>
-
+    </article>
   </main>
 
-
   <footer>
-    <p>
-      &copy; 2024 No Play Games Studio. Todos los derechos reservados.
-    </p>
-
-    <div style="margin-top: 10px;">
-      <a href="https://github.com/bonzoycv" target="_blank" style="color: #b2bec3; text-decoration: none;"
-        title="GitHub">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-        </svg>
-      </a>
+    <p>&copy; 2024 No Play Games Studio. Todos los derechos reservados.</p>
+    <div class="social-icons">
+        <a href="https://github.com/bonzoycv" target="_blank" class="social-link" title="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="/feed.xml" target="_blank" class="social-link" title="RSS Feed">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+        </a>
     </div>
   </footer>
 
-  <!-- script para el comportamiento del menu en celulares -->
   <script>
     const menuToggle = document.getElementById("mobile-menu");
     const navLinks = document.getElementById("nav-links");
@@ -181,5 +125,4 @@
     });
   </script>
 </body>
-
 </html>

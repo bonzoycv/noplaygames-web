@@ -88,23 +88,44 @@ nav ul li a:hover {
   color: #fff;
 }
 
-/* === ICONO DE GITHUB (General) === */
-/* CORRECCIÓN: Esto debe estar FUERA del @media query para que se vea bien en PC */
-.github-link {
+/* === ICONOS SOCIALES (GitHub y RSS) === */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem; /* Espacio entre los iconos */
+    margin-top: 15px;
+}
+
+.social-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px; 
+    padding: 5px;
+    transition: transform 0.2s ease;
 }
 
-.github-link svg {
-    fill: #b2bec3; 
-    transition: fill 0.3s ease, transform 0.3s ease;
+.social-link svg {
+    fill: #b2bec3; /* Color gris por defecto */
+    transition: fill 0.3s ease;
+    width: 24px;  /* Tamaño fijo para asegurar consistencia */
+    height: 24px;
 }
 
-.github-link:hover svg {
-    fill: #ffffff; 
-    transform: scale(1.1); 
+.social-link:hover {
+    transform: scale(1.15); /* Efecto de zoom leve */
+}
+
+.social-link:hover svg {
+    fill: #ffffff; /* Se ilumina en blanco al pasar el mouse */
+}
+
+/* Ajuste específico para móvil (si es necesario) */
+@media (max-width: 768px) {
+    .social-link svg {
+        width: 28px; /* Un poco más grandes en el celular para tocar mejor */
+        height: 28px;
+    }
 }
 
 /* === SUBMENÚ DESPLEGABLE === */

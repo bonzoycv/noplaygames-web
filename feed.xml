@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet href="/rss-style.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+<channel>
+    <title>No Play Games</title>
+    <link>https://www.noplaygames.dev</link>
+    <description>Blog de Linux, Fedora, Arch y Scripting en Bash.</description>
+    <language>es-es</language>
+    <lastBuildDate>Sat, 06 Dec 2025 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://www.noplaygames.dev/feed.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+        <title>Alias fopen: Edición rápida con fzf</title>
+        <link>https://www.noplaygames.dev/noplay/post/fopen-alias.html</link>
+        <guid>https://www.noplaygames.dev/noplay/post/fopen-alias.html</guid>
+        <description>Cómo usar fzf para encontrar y abrir archivos en Nano instantáneamente.</description>
+        <pubDate>Sat, 06 Dec 2025 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+        <title>Alias fcd: Navegación rápida</title>
+        <link>https://www.noplaygames.dev/noplay/post/fcd-alias.html</link>
+        <guid>https://www.noplaygames.dev/noplay/post/fcd-alias.html</guid>
+        <description>Navegación interactiva entre directorios usando fzf y alias de Bash.</description>
+        <pubDate>Fri, 05 Dec 2025 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+        <title>Script de actualización para Fedora</title>
+        <link>https://www.noplaygames.dev/noplay/post/fedora-update.html</link>
+        <guid>https://www.noplaygames.dev/noplay/post/fedora-update.html</guid>
+        <description>Script para automatizar el mantenimiento de DNF y Flatpak en Fedora.</description>
+        <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+        <title>Introducción a fzf</title>
+        <link>https://www.noplaygames.dev/noplay/post/fzf.html</link>
+        <guid>https://www.noplaygames.dev/noplay/post/fzf.html</guid>
+        <description>Primeros pasos con la herramienta de búsqueda difusa en la terminal.</description>
+        <pubDate>Wed, 03 Dec 2025 00:00:00 GMT</pubDate>
+    </item>
+
+</channel>
+</rss>

@@ -4,11 +4,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Alias fopen - No Play Games</title>
-  <meta name="description" content="Crea un alias 'fopen' para buscar y abrir archivos en Nano instantáneamente usando fzf. Mejora tu flujo de trabajo en la terminal de Linux.">
+  <title>Alias fopen: Edición rápida con Nano - No Play Games</title>
+  <meta name="description" content="Mi flujo de trabajo para buscar y abrir archivos en Nano instantáneamente usando fzf.">
   <link rel="stylesheet" href="../../style.css" />
   <link rel="icon" type="image/x-icon" href="../../sources/favicon-32x32.png">
+
+  <meta property="og:title" content="Alias fopen: Edición rápida con Nano" />
+  <meta property="og:description" content="Cómo uso fzf para encontrar archivos perdidos y abrirlos al instante." />
+  <meta property="og:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
+  <meta property="og:url" content="https://www.noplaygames.dev/noplay/post/fopen-alias.html" />
+  <meta property="og:type" content="article" />
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Alias fopen: Edición rápida" />
+  <meta name="twitter:description" content="Cómo uso fzf para encontrar archivos perdidos y abrirlos al instante." />
+  <meta name="twitter:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
 </head>
 
 <body>
@@ -22,18 +32,16 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="/index.html">Inicio</a></li>
         <li><a href="/noplay/post/linux.html">Artículos</a></li>
-        <li><a href="#">Proyectos</a></li>
+        <li><a href="/noplay/proyectos.html">Proyectos</a></li>
         <li><a href="/noplay/perfil.html">Perfil</a></li>
         <li><a href="/noplay/contacto.html">Contacto</a></li>
 
-        <li>
-          <a href="https://github.com/bonzoycv" target="_blank" class="github-link" title="Ver mi código en GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-            </svg>
-          </a>
-        </li>
+        <div class="social-icons" style="margin-top: 0;">
+             <a href="https://github.com/bonzoycv" target="_blank" class="social-link" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+           
+        </div>
       </ul>
     </nav>
   </header>
@@ -41,24 +49,23 @@
   <main>
     <article class="blog-entry">
       <h1>Alias fopen: Edición rápida con Nano</h1>
-      <span class="date">6 de diciembre, 2025</span>
+      <span class="date">2025</span>
 
       <p>
-        Si con <code>fcd</code> solucionamos el problema de movernos entre carpetas, con <strong>fopen</strong>
-        solucionamos el problema de encontrar qué editar.
+        Si con <code>fcd</code> solucioné el problema de moverme entre carpetas, con <strong>fopen</strong>
+        solucioné el problema de encontrar qué editar.
       </p>
 
       <p>
-        A veces sé cómo se llama el archivo (o parte de su nombre), pero casi nunca recuerdo exactamente en qué
-        subcarpeta está. Escribir <code>nano ruta/larga/y/olvidada/config.conf</code> rompe el flujo de trabajo.
+        A menudo recuerdo el nombre del archivo (o parte de él), pero rara vez recuerdo en qué subcarpeta profunda lo guardé. Escribir <code>nano ruta/larga/y/olvidada/config.conf</code> rompía mi flujo de trabajo.
       </p>
 
-      <h3>La Solución</h3>
-      <p>Este alias busca archivos recursivamente desde donde estoy parado, me deja elegir uno con <strong>fzf</strong>
+      <h3>Mi Solución</h3>
+      <p>Este alias busca archivos recursivamente desde donde estoy parado, me permite elegir uno con <strong>fzf</strong>
         y lo abre automáticamente en mi editor preferido (Nano).</p>
 
       <h3>El Código</h3>
-      <p>Al igual que el anterior, esto va en el <code>.bashrc</code>:</p>
+      <p>Al igual que el anterior, esto lo agrego en mi <code>.bashrc</code>:</p>
 
       <pre><code># fopen - Buscar archivo y abrirlo con Nano
 fopen() {
@@ -78,45 +85,39 @@ fopen() {
       <br>
       <hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
 
-      <p style="font-style: italic; font-size: 0.9rem; color: #7f8c8d;">
-        <strong>Nota:</strong> Esta configuración la encontré originalmente en algún blog que, lamentablemente, ya no
-        recuerdo. Aunque no puedo dar el crédito exacto al autor, quería mencionarlo porque fue el recurso clave para
-        empezar con <code>fzf</code> Tengo anotados varios alias más y, aunque no los uso con mucha frecuencia, iré
-        compartiendo en futuros artículos.
+        <p style="font-style: italic; font-size: 0.9rem; color: #7f8c8d;">
+        <strong>Nota:</strong> Esta configuración la encontré originalmente en un blog que, lamentablemente, ya no recuerdo. Aunque no puedo dar el crédito exacto al autor, quería mencionarlo porque fue el recurso clave para empezar con <a href="/noplay/post/fzf.html"><strong>fzf</strong></a>. Tengo algunos alias más que iré compartiendo en futuros artículos.
       </p>
 
       <script src="https://giscus.app/client.js"
         data-repo="bonzoycv/noplaygames-comentarios"
-        data-repo-id="R_kgDOQlhrMQ"
+        data-repo-id="R_kgDOQlhrmQ"
         data-category="General"
-        data-category-id="DIC_kwDOQlhrMc4CzlNQ"
+        data-category-id="DIC_kwDOQlhrmc4CzlNQ"
         data-mapping="url"
         data-strict="0"
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="noborder_light"
         data-lang="es"
         crossorigin="anonymous"
         async>
-</script>
+      </script>
 
     </article>
-
-    
   </main>
 
   <footer>
     <p>&copy; 2024 No Play Games Studio. Todos los derechos reservados.</p>
 
-    <div style="margin-top: 10px;">
-      <a href="https://github.com/bonzoycv" target="_blank" style="color: #b2bec3; text-decoration: none;"
-        title="GitHub">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-        </svg>
-      </a>
+    <div class="social-icons">
+        <a href="https://github.com/bonzoycv" target="_blank" class="social-link" title="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="/feed.xml" target="_blank" class="social-link" title="RSS Feed">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+        </a>
     </div>
   </footer>
 
@@ -128,5 +129,4 @@ fopen() {
     });
   </script>
 </body>
-
 </html>
