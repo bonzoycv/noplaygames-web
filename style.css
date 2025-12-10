@@ -311,47 +311,54 @@ footer {
 
 
 
-/* === MENÚ MÓVIL (MEDIA QUERY) === */
+/* === MENÚ MÓVIL (RESPONSIVE) === */
+
+/* 1. ESTADO POR DEFECTO (Escritorio/PC) */
 .menu-toggle {
-  display: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: #fff;
+  display: none; /* Oculta la hamburguesa en PC */
 }
 
-.nav-links {
-  display: flex;
-  gap: 1rem;
-}
-
-/* Esto solo aplica en pantallas menores a 768px (tablets y celulares) */
+/* 2. ESTADO MÓVIL (Celulares y Tablets pequeñas) */
 @media (max-width: 768px) {
+  
+  /* Mostrar el botón hamburguesa */
   .menu-toggle {
-    display: block; 
+    display: block;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--header-text);
+    padding: 0.5rem; 
   }
 
+  /* Ocultar los enlaces por defecto */
   .nav-links {
-    display: none; 
-    position: fixed;
-    top: 0;
-    left: 0;
+    display: none;
     flex-direction: column;
-    background-color: #1e1e1e;
-    height: 100vh;
-    width: 100vw;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    z-index: 2000;
+    width: 100%;
+    text-align: center;
+    background-color: var(--header-bg);
+    padding-bottom: 1rem;
+    
+    /* Para que flote sobre el contenido */
+    position: absolute;
+    top: 70px;
+    left: 0;
+    z-index: 1000;
   }
 
+  /* Mostrar enlaces SOLO cuando tengan la clase 'showing' */
   .nav-links.showing {
-    display: flex; 
+    display: flex;
   }
   
-  /* Ajuste del icono para móvil */
+  /* Espaciado entre enlaces en modo móvil */
+  .nav-links li {
+    margin: 1rem 0;
+  }
+
+  /* Ajuste del icono Github para móvil (DENTRO de la media query) */
   .github-link svg {
       width: 32px; 
       height: 32px;
   }
-}
+} /* <--- AQUÍ CIERRA TODO EL BLOQUE MÓVIL */
