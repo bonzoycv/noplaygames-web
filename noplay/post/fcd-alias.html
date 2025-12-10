@@ -54,15 +54,15 @@
       <span class="date">2025</span>
 
       <p>
-        Si ya tengo instalado <strong>fzf</strong>, el siguiente paso lógico es usarlo para moverme. Escribir rutas largas como <code>cd Documentos/Proyectos/Python/App</code> me resultaba lento y propenso a errores. 
+        Si ya tengo instalado <strong>fzf</strong>, el siguiente paso lógico es usarlo para moverme entre directorios. Escribir rutas largas como <code>cd Documentos/Proyectos/Python/App</code> me resultaba lento y propenso a errores. 
       </p>
       
       <p>
-        Para solucionar esto, uso un alias (o mejor dicho, una función) que llamo <code>fcd</code> ("Fuzzy Change Directory").
+        Para solucionar esto, uso un alias (o mejor dicho, una función) que llamo <code>fcd</code>
       </p>
 
       <h3>¿Qué hace?</h3>
-      <p>Simplemente escribo <code>fcd</code> en la terminal, presiono Enter, y me muestra una lista de todas las carpetas dentro del directorio actual. Empiezo a escribir el nombre de la carpeta a la que quiero ir, fzf la filtra al instante, y al dar Enter, me "teletransporto" ahí.</p>
+      <p>Simplemente escribo <code>fcd</code> en la terminal, presiono Enter, y me muestra una lista de todas las carpetas dentro del directorio actual. Empiezo a escribir el nombre de la carpeta a la que quiero ir, fzf la filtra al instante, y al dar Enter, entro a la carpeta deseada.</p>
 
       <h3>El Código</h3>
       <p>Agrego esta función a mi archivo <code>.bashrc</code>:</p>
@@ -77,7 +77,7 @@ fcd() {
       
       <p><strong>Nota:</strong> Uso <code>-maxdepth 5</code> para que no tarde una eternidad si busco desde la raíz, y <code>-not -path '*/.*'</code> para ignorar carpetas ocultas molestas (como .git).</p>
 
-      <p>Es un cambio pequeño, pero me evita tener que presionar la tecla <code>Tab</code> veinte veces para autocompletar una ruta.</p>
+      <p>Es un cambio pequeño, pero me evita tener que presionar la tecla <code>Tab</code> veinte veces para autocompletar una ruta y me siento como un hacker aunque no esté hackeando absolutamente nada.</p>
       
       <br>
       <hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
