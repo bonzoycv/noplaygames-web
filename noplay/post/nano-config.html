@@ -4,21 +4,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Script de actualización para Fedora - No Play Games</title>
-  <meta name="description"
-    content="Mi script personal en Bash para automatizar el mantenimiento de DNF y Flatpak en Fedora Linux.">
+  <title>Configurando .nanorc: Potenciando Nano - No Play Games</title>
+  <meta name="description" content="Cómo convierto Nano en mi editor de código principal editando el archivo .nanorc.">
   <link rel="stylesheet" href="../../style.css" />
   <link rel="icon" type="image/x-icon" href="../../sources/favicon-32x32.png">
 
-  <meta property="og:title" content="Script de actualización para Fedora" />
-  <meta property="og:description" content="Cómo automatizo el mantenimiento de DNF y Flatpak con un solo comando." />
+  <meta property="og:title" content="Configurando .nanorc: Potenciando Nano" />
+  <meta property="og:description"
+    content="Cómo convierto Nano en un editor de código decente sin instalar nada extra." />
   <meta property="og:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
-  <meta property="og:url" content="https://www.noplaygames.dev/noplay/post/fedora-update.html" />
+  <meta property="og:url" content="https://www.noplaygames.dev/noplay/post/nano-config.html" />
   <meta property="og:type" content="article" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Script de actualización para Fedora" />
-  <meta name="twitter:description" content="Cómo automatizo el mantenimiento de DNF y Flatpak con un solo comando." />
+  <meta name="twitter:title" content="Configurando .nanorc: Potenciando Nano" />
+  <meta name="twitter:description"
+    content="Cómo convierto Nano en un editor de código decente sin instalar nada extra." />
   <meta name="twitter:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
 </head>
 
@@ -51,58 +52,71 @@
 
   <main>
     <article class="blog-entry">
-      <h1>Mantenimiento en Fedora: Mi script de actualización</h1>
+      <h1>Configurando .nanorc: Potenciando Nano</h1>
       <span class="date">2025</span>
 
       <p>
-        Esta es una nota rápida sobre mi rutina para actualizar el sistema. Aunque Fedora es muy estable, me gusta
-        mantener limpio el sistema de paquetería y los runtimes de Flatpak para evitar acumular "basura" digital a largo
-        plazo.
+        Una de las primeras configuraciones que hago al instalar un nuevo sistema Linux es configurar mi
+        <code>.bashrc</code> (de lo cual hablaremos en otra ocasión) y, sobre todo, configurar mi archivo
+        <code>.nanorc</code>
       </p>
 
-      <h3>1. Los comandos base</h3>
-      <p>Para la paquetería tradicional (RPM), prefiero forzar el refresco de los metadatos antes de actualizar para
-        asegurarme de tener la última versión real de los repositorios:</p>
-      <pre><code>sudo dnf upgrade --refresh</code></pre>
+      <p>
+        Para ser totalmente sincero siempre me ha costado demasiado aprender a usar Vim. Sé que es potente, pero
+        lo encuentro demasiado
+        complicado e innecesario para mi flujo de trabajo, ya que no hago cosas complicadas, solo unas pocas
+        configuraciones de vez en cuando y nada demasiado técnico. Así que prefiero la facilidad de uso de
+        <strong>Nano</strong>. Me
+        ofrece exactamente lo que necesito sin complicarme la vida con modos de inserción o comandos crípticos.
+      </p>
+
+      <p>
+        Sin embargo, la configuración por defecto de Nano es demasiado básica. Así es como convierto Nano en un editor
+        de código decente en un par de minutos sin instalar nada extra.
+      </p>
+
+      <h3>1. Creando el archivo de configuración</h3>
+      <p>Nano lee las configuraciones del usuario desde un archivo oculto en el directorio home. Al ser una instalacion
+        nueva, el archivo no existe,
+        simplemente lo creo:</p>
+      <pre><code>nano ~/.nanorc</code></pre>
       <br>
 
-      <p>Con Flatpak, no solo actualizo las aplicaciones; de vez en cuando también procedo a purgar los runtimes (como
-        los de NVIDIA o GNOME) que quedan huérfanos tras una actualización mayor del sistema y que ya no necesito:</p>
-      <pre><code>flatpak update
-flatpak uninstall --unused</code></pre>
+      <h3>2. Mis ajustes esenciales</h3>
+      <p>Dentro de este archivo, activo las opciones que considero vitales para trabajar con scripts o archivos de
+        configuración:</p>
+
+      <pre><code># Mostrar números de línea (vital para programar)
+set linenumbers
+
+# Desplazamiento suave (scroll línea por línea en lugar de saltos de página)
+set smooth
+
+# Tamaño de tabulación a 4 espacios
+set tabsize 4
+
+# Convertir tabs a espacios (opcional, pero mi preferencia)
+set tabstospaces</code></pre>
       <br>
 
-      <h3>2. Automatizando con un Script</h3>
-      <p>Para simplificar el proceso y no escribir los mismos comandos cada vez, uso este pequeño script en bash, lo
-        guardo en <code>~/.local/bin/update</code> para ejecutarlo rápidamente desde cualquier terminal.</p>
+      <h3>3. Resaltado de Sintaxis</h3>
+      <p>
+        Lo que mucha gente ignora es que Nano ya incluye resaltado de sintaxis, solo hay que activarlo. En Fedora (y la
+        mayoría de distros como Arch o Ubuntu), los archivos de definición ya están instalados en
+        <code>/usr/share/nano/</code>
+      </p>
+      <p>
+        Para activarlos todos de golpe, simplemente añado esta línea al final de mi <code>.nanorc</code>
+      </p>
+      <pre><code>include "/usr/share/nano/*.nanorc"</code></pre>
 
-      <pre><code>#!/bin/bash
+      <p>
+        Guardo con <code>Ctrl+O</code> <code>Enter</code> y <code>Ctrl+X</code>, la próxima vez que abra un
+        archivo <code>.py</code> <code>.html</code> o <code>.sh</code> tendré colores, números de línea y un editor
+        cómodo, rápido y simple. Mi manera de trabajar.
+      </p>
 
-# Colores para mejorar la legibilidad
-GREEN='\033[0;32m'
-NC='\033[0m' # No Color
-
-echo -e "${GREEN}--- Iniciando actualización de Fedora ---${NC}"
-
-# 1. DNF
-echo -e "${GREEN}[+] Actualizando repositorios y sistema base...${NC}"
-sudo dnf upgrade --refresh -y
-
-# 2. Flatpak
-echo -e "${GREEN}[+] Actualizando aplicaciones Flatpak...${NC}"
-flatpak update -y
-
-# 3. Limpieza
-echo -e "${GREEN}[+] Limpiando paquetes innecesarios...${NC}"
-sudo dnf autoremove -y
-flatpak uninstall --unused -y
-
-echo -e "${GREEN}--- Sistema actualizado y limpio ---${NC}"</code></pre>
-
-      <p>Finalmente, solo necesito darle permisos de ejecución una única vez:</p>
-      <pre><code>chmod +x ~/.local/bin/update</code></pre>
-
-      <hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
+      <br>
 
       <script src="https://giscus.app/client.js" data-repo="bonzoycv/noplaygames-comentarios"
         data-repo-id="R_kgDOQlhrmQ" data-category="General" data-category-id="DIC_kwDOQlhrmc4CzlNQ" data-mapping="url"

@@ -5,12 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alias fgrep: Buscar texto en archivos - No Play Games</title>
-  <meta name="description" content="Mi método para encontrar cadenas de texto dentro de archivos y abrirlos en la línea exacta usando grep, fzf y nano.">
+  <meta name="description"
+    content="Mi método para encontrar cadenas de texto dentro de archivos y abrirlos en la línea exacta usando grep, fzf y nano.">
   <link rel="stylesheet" href="../../style.css" />
   <link rel="icon" type="image/x-icon" href="../../sources/favicon-32x32.png">
 
   <meta property="og:title" content="Alias fgrep: Buscar dentro de archivos" />
-  <meta property="og:description" content="Busca texto dentro de cientos de archivos al instante y salta a la línea exacta con Nano." />
+  <meta property="og:description"
+    content="Busca texto dentro de cientos de archivos al instante y salta a la línea exacta con Nano." />
   <meta property="og:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
 </head>
 
@@ -25,15 +27,18 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="/index.html">Inicio</a></li>
         <li><a href="/noplay/post/linux.html">Artículos</a></li>
-        <li><a href="/noplay/proyectos.html">Proyectos</a></li> 
+        <li><a href="/noplay/proyectos.html">Proyectos</a></li>
         <li><a href="/noplay/perfil.html">Perfil</a></li>
         <li><a href="/noplay/contacto.html">Contacto</a></li>
-        
+
         <div class="social-icons" style="margin-top: 0;">
-            <a href="https://github.com/bonzoycv" target="_blank" class="social-link" title="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          
+          <a href="https://github.com/bonzoycv" target="_blank" class="social-link" title="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+          </a>
+
         </div>
       </ul>
     </nav>
@@ -45,15 +50,19 @@
       <span class="date">2025</span>
 
       <p>
-        Ya aprendí a moverme en el terminal con (<code>fcd</code>) y a abrir archivos por nombre usando (<code>fopen</code>). Comprendí que el siguiente paso lógico sería aprender a buscar de manera más específica una línea de código que, por ejemplo, no recuerdo en qué archivo está.
+        Ya aprendí a moverme en el terminal con <code>fcd</code> y a abrir archivos por nombre usando
+        <code>fopen</code>. Comprendí que el siguiente paso lógico sería aprender a buscar de manera más específica una
+        línea de código que, por ejemplo, no recuerdo en qué archivo está.
       </p>
-      
+
       <p>
-        Usar <code>grep -r "texto" .</code> llena la pantalla de resultados difíciles de leer (al menos para mí). La idea de este alias es combinar la potencia de grep con la interactividad de fzf.
+        Usar <code>grep -r "texto" .</code> llena la pantalla de resultados difíciles de leer (al menos para mí). La
+        idea de este alias es combinar la potencia de grep con la interactividad de fzf.
       </p>
 
       <h3>Mi Solución</h3>
-      <p>Este alias busca recursivamente en el directorio actual, muestra los resultados en tiempo real y, <strong>al presionar Enter, me abre Nano exactamente en la línea donde está el texto.</strong></p>
+      <p>Este alias busca recursivamente en el directorio actual, muestra los resultados en tiempo real y, <strong>al
+          presionar Enter, me abre Nano exactamente en la línea donde está el texto.</strong></p>
 
       <h3>El Código</h3>
       <p>Añado esto a mi <code>.bashrc</code> (siempre comentando cada línea, no confío en mi memoria):</p>
@@ -80,7 +89,7 @@ fgrep() {
   fi
 }</code></pre>
       <br>
-      
+
       <h3>¿Cómo lo uso?</h3>
       <p>Simplemente escribo en el terminal:</p>
       <pre><code>fgrep "function iniciar"</code></pre>
@@ -90,25 +99,18 @@ fgrep() {
       <br>
       <hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
 
-        <p style="font-style: italic; font-size: 0.9rem; color: #7f8c8d;">
-        <strong>Nota:</strong> Esta configuración la encontré originalmente en un blog que, lamentablemente, ya no recuerdo. Aunque no puedo dar el crédito exacto al autor, quería mencionarlo porque fue el recurso clave para empezar con <a href="/noplay/post/fzf.html"><strong>fzf</strong></a>. Tengo algunos alias más que iré compartiendo en futuros artículos.
+      <p style="font-style: italic; font-size: 0.9rem; color: #7f8c8d;">
+        <strong>Nota:</strong> Esta configuración la encontré originalmente en un blog que, lamentablemente, ya no
+        recuerdo. Aunque no puedo dar el crédito exacto al autor, quería mencionarlo porque fue el recurso clave para
+        empezar con <a href="/noplay/post/fzf.html"><strong>fzf</strong></a>. Tengo algunos alias más que iré
+        compartiendo en futuros artículos.
       </p>
 
       <section id="comments">
-          <script src="https://giscus.app/client.js"
-              data-repo="bonzoycv/noplaygames-comentarios"
-              data-repo-id="R_kgDOQlhrmQ"
-              data-category="General"
-              data-category-id="DIC_kwDOQlhrmc4CzlNQ"
-              data-mapping="url"
-              data-strict="0"
-              data-reactions-enabled="1"
-              data-emit-metadata="0"
-              data-input-position="bottom"
-              data-theme="noborder_light"
-              data-lang="es"
-              crossorigin="anonymous"
-              async>
+        <script src="https://giscus.app/client.js" data-repo="bonzoycv/noplaygames-comentarios"
+          data-repo-id="R_kgDOQlhrmQ" data-category="General" data-category-id="DIC_kwDOQlhrmc4CzlNQ" data-mapping="url"
+          data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom"
+          data-theme="noborder_light" data-lang="es" crossorigin="anonymous" async>
           </script>
       </section>
 
@@ -118,8 +120,16 @@ fgrep() {
   <footer>
     <p>&copy; 2024 No Play Games Studio. Todos los derechos reservados.</p>
     <div class="social-icons">
-        <a href="https://github.com/bonzoycv" target="_blank" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-        <a href="/feed.xml" target="_blank" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg></a>
+      <a href="https://github.com/bonzoycv" target="_blank" class="social-link"><svg xmlns="http://www.w3.org/2000/svg"
+          width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+        </svg></a>
+      <a href="/feed.xml" target="_blank" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+          height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z" />
+        </svg></a>
     </div>
   </footer>
 
@@ -131,4 +141,5 @@ fgrep() {
     });
   </script>
 </body>
+
 </html>

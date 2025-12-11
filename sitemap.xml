@@ -2,13 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
       <loc>https://www.noplaygames.dev/</loc>
-      <lastmod>2025-12-08</lastmod>
+      <lastmod>2025-12-11</lastmod>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
    </url>
    <url>
-      <loc>https://www.noplaygames.dev/noplay/linux/fzf.html</loc>
-      <lastmod>2025-06-23</lastmod>
+      <loc>https://www.noplaygames.dev/noplay/post/nano-config.html</loc>
+      <lastmod>2025-12-11</lastmod>
+      <priority>0.9</priority>
+   </url>
+   <url>
+      <loc>https://www.noplaygames.dev/noplay/post/fopen-alias.html</loc>
+      <lastmod>2025-12-06</lastmod>
       <priority>0.8</priority>
    </url>
    <url>
@@ -17,8 +22,13 @@
       <priority>0.8</priority>
    </url>
    <url>
-      <loc>https://www.noplaygames.dev/noplay/post/fopen-alias.html</loc>
-      <lastmod>2025-12-06</lastmod>
+      <loc>https://www.noplaygames.dev/noplay/post/fedora-update.html</loc>
+      <lastmod>2025-12-04</lastmod>
       <priority>0.8</priority>
    </url>
-   </urlset>
+   <url>
+      <loc>https://www.noplaygames.dev/noplay/post/fzf.html</loc>
+      <lastmod>2025-12-03</lastmod>
+      <priority>0.8</priority>
+   </url>
+</urlset>

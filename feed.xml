@@ -7,8 +7,16 @@
     <link>https://www.noplaygames.dev</link>
     <description>Blog de Linux, Fedora, Arch y Scripting en Bash.</description>
     <language>es-es</language>
-    <lastBuildDate>Sat, 06 Dec 2025 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 11 Dec 2025 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://www.noplaygames.dev/feed.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+        <title>Configurando .nanorc: Potenciando Nano</title>
+        <link>https://www.noplaygames.dev/noplay/post/nano-config.html</link>
+        <guid>https://www.noplaygames.dev/noplay/post/nano-config.html</guid>
+        <description>Cómo convierto Nano en un editor de código decente sin instalar nada extra.</description>
+        <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
+    </item>
 
     <item>
         <title>Alias fopen: Edición rápida con fzf</title>
