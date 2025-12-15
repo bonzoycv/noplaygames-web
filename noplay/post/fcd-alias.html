@@ -6,20 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alias fcd: Navegación rápida - No Play Games</title>
   <meta name="description"
-    content="Mi método para moverme rápidamente entre carpetas usando fzf y una función simple en Bash.">
+    content="Mi método para moverme rápidamente entre carpetas usando fzf y fd (o find como respaldo).">
   <link rel="stylesheet" href="../../style.css" />
   <link rel="icon" type="image/x-icon" href="../../sources/favicon-32x32.png">
 
   <meta property="og:title" content="Alias fcd: Navegación rápida" />
-  <meta property="og:description" content="Cómo uso fzf para saltar entre carpetas sin escribir rutas eternas." />
+  <meta property="og:description" content="Cómo uso fzf para moverme entre carpetas sin escribir rutas largas." />
   <meta property="og:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
   <meta property="og:url" content="https://www.noplaygames.dev/noplay/post/fcd-alias.html" />
   <meta property="og:type" content="article" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Alias fcd: Navegación rápida" />
-  <meta name="twitter:description" content="Cómo uso fzf para saltar entre carpetas sin escribir rutas eternas." />
-  <meta name="twitter:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
 </head>
 
 <body>
@@ -27,26 +22,6 @@
     <div id="logo">
       <a href="/index.html"><img src="../../sources/no_play_logo.webp" alt="Logo de No Play Games" /></a>No Play Games
     </div>
-
-    <nav>
-      <div class="menu-toggle" id="mobile-menu">&#9776;</div>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="/index.html">Inicio</a></li>
-        <li><a href="/noplay/post/linux.html">Artículos</a></li>
-        <li><a href="/noplay/proyectos.html">Proyectos</a></li>
-        <li><a href="/noplay/perfil.html">Perfil</a></li>
-        <li><a href="/noplay/contacto.html">Contacto</a></li>
-
-        <div class="social-icons" style="margin-top: 0;">
-          <a href="https://github.com/bonzoycv" target="_blank" class="social-link" title="GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-            </svg>
-          </a>
-        </div>
-      </ul>
-    </nav>
   </header>
 
   <main>
@@ -55,35 +30,42 @@
       <span class="date">2025</span>
 
       <p>
-        Si ya tengo instalado <strong>fzf</strong>, el siguiente paso lógico es usarlo para moverme entre directorios.
-        Escribir rutas largas como <code>cd Documentos/Proyectos/Python/App</code> es lento, aburrido y propenso a
-        errores.
+        Si ya tengo instalado <strong>fzf</strong>, el siguiente paso lógico es usarlo para moverme entre
+        directorios. Escribir rutas largas a mano es lento, aburrido y rompe el flujo.
       </p>
 
       <p>
-        Para evitar eso, uso una pequeña función en Bash llamada <code>fcd</code>
+        Para evitar eso, uso una función en Bash llamada <code>fcd</code>
       </p>
 
       <h3>¿Qué hace?</h3>
       <p>
-        Escribo <code>fcd</code> en la terminal y presiono Enter. Aparece una lista con todas las carpetas dentro del
-        directorio actual. Empiezo a escribir, <strong>fzf filtra al instante</strong> y, al presionar Enter,
-        cambio directamente a la carpeta seleccionada.
+        Escribo <code>fcd</code> en la terminal y aparece una lista interactiva de carpetas.
+        Empiezo a escribir, <strong>fzf filtra al instante</strong> y, al presionar Enter,
+        cambio directamente al directorio seleccionado.
       </p>
 
       <h3>El código</h3>
       <p>
-        Agrego esta función a mi archivo <code>.bashrc</code>
+        Agrego esta función a mi <code>.bashrc</code> Usa <code>fd</code> si está disponible y
+        <code>find</code> como respaldo.
       </p>
 
       <pre><code># fcd - Cambiar de directorio usando fzf
-# Requiere: fzf
+# Usa fd si está disponible, sino find
 
 fcd() {
   local dir
 
-  # Buscar directorios (ignorando carpetas ocultas)
-  dir=$(find . -maxdepth 5 -type d -not -path '*/.*' | fzf)
+  if command -v fd &gt;/dev/null; then
+    # fd: más rápido, incluye ocultos (-H), excluye .git y node_modules
+    dir=$(fd -H -E .git -E node_modules -t d . | fzf)
+  else
+    # Fallback a find tradicional
+    dir=$(find . -maxdepth 5 -type d \
+      -not -path '*/.git/*' \
+      -not -path '*/node_modules/*' | fzf)
+  fi
 
   # Solo cambio de directorio si seleccioné algo
   if [ -n "$dir" ]; then
@@ -93,45 +75,26 @@ fcd() {
 </code></pre>
 
       <p>
-        <strong>Nota:</strong> Uso <code>-maxdepth 5</code> para que no tarde una eternidad si ejecuto esto desde un
-        directorio grande, y filtro carpetas ocultas para evitar ruido como <code>.git</code>
+        <strong>Nota:</strong> Con <code>fd</code> puedo ver carpetas ocultas útiles como
+        <code>.config</code> o <code>.local</code> pero sigo ignorando ruido como
+        <code>.git</code> o <code>node_modules</code> Si <code>fd</code> no está instalado,
+        el script sigue funcionando con <code>find</code>
       </p>
 
       <p>
-        Es un cambio pequeño, pero me evita tener que aporrear la tecla <code>Tab</code> veinte veces para
-        autocompletar rutas. Además, me hace sentir como un hacker, aunque no esté hackeando absolutamente nada.
+        Es un cambio pequeño, pero elimina fricción. Menos escribir rutas,
+        menos autocompletado, más flujo.
       </p>
 
       <hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
 
       <p style="font-style: italic; font-size: 0.9rem; color: #7f8c8d;">
-        <strong>Nota:</strong> Esta configuración la encontré originalmente en un blog que, lamentablemente,
-        ya no recuerdo. Aunque no puedo dar el crédito exacto al autor, fue el punto de partida para empezar
-        a usar <a href="/noplay/post/fzf.html"><strong>fzf</strong></a>. Tengo más alias de este estilo que iré
-        documentando en futuros artículos.
+        <strong>Nota:</strong> Esta idea la encontré originalmente en un blog que ya no recuerdo.
+        Fue el punto de partida para empezar a usar <strong>fzf</strong> y construir mis propios alias.
       </p>
-
-      <script src="https://giscus.app/client.js" data-repo="bonzoycv/noplaygames-comentarios"
-        data-repo-id="R_kgDOQlhrmQ" data-category="General" data-category-id="DIC_kwDOQlhrmc4CzlNQ"
-        data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0"
-        data-input-position="bottom" data-theme="noborder_light" data-lang="es"
-        crossorigin="anonymous" async>
-      </script>
 
     </article>
   </main>
-
-  <footer>
-    <p>&copy; 2024 No Play Games Studio. Todos los derechos reservados.</p>
-  </footer>
-
-  <script>
-    const menuToggle = document.getElementById("mobile-menu");
-    const navLinks = document.getElementById("nav-links");
-    menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("showing");
-    });
-  </script>
 </body>
 
 </html>
