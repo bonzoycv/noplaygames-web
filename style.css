@@ -245,7 +245,28 @@ pre {
   max-width: 100%;
 }
 
-code {
+pre code {
+  display: block; /* Aquí sí queremos que ocupe todo el ancho */
+  padding: 1em;
+  overflow-x: auto; /* Scroll si es muy largo */
+  border: none; /* El borde lo maneja el 'code' base o el pre si quisieras */
+}
+
+/* .cmd-preview {
+    display: block; 
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 0;
+    color: var(--text) !important; 
+    background-color: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: 'Consolas', monospace;
+    font-size: 0.9em;
+}
+
+/* code {
   display: block;
   padding: 1em;
   background-color: var(--code-bg);
@@ -253,6 +274,16 @@ code {
   border-radius: 4px;
   font-family: 'Consolas', monospace;
   font-size: 14px;
+} */ 
+
+code {
+  font-family: 'Consolas', monospace;
+  font-size: 0.9em; /* Un poco más pequeño que el texto normal */
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 4px;
+  padding: 2px 6px; /* Padding pequeño para no romper la línea */
+  display: inline-block; /* IMPORTANTE: Ya no es block */
 }
 
 .blog-entry img, .img-dungeon {
@@ -273,6 +304,13 @@ footer {
   margin-top: auto;
 }
 
+/* === CONTADOR DE VISITAS === */
+.visit-count {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    font-weight: 500;
+}
 
 /* === FORMULARIO DE CONTACTO === */
 .contact-form {
@@ -325,6 +363,46 @@ footer {
 .contact-form button:hover {
     background-color: #0069d9; /* Un azul un poco más oscuro */
     transform: translateY(-2px);
+}
+
+
+
+/* === ESTILOS PARA PÁGINAS DE PROYECTO (Bash Workflow) === */
+
+.project-intro {
+    margin-bottom: 2rem;
+}
+
+.project-intro p {
+    color: #555;
+    line-height: 1.6;
+    max-width: 800px; /* Para que el texto no sea eterno de leer en pantallas anchas */
+}
+
+.section-title {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--code-border); /* Usamos tu variable de borde */
+    padding-bottom: 10px;
+    color: var(--text);
+}
+
+.cmd-preview {
+    margin: 10px 0;
+    display: block;
+    font-size: 0.85rem;
+    color: var(--accent); /* Un toque de color para el comando */
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.status-soon {
+    font-size: 0.8rem;
+    color: #999;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 
