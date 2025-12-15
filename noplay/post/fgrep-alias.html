@@ -50,25 +50,25 @@
 
       <p>
         Ya aprendí a moverme por la terminal con <code>fcd</code> y a abrir archivos por nombre usando
-        <code>fopen</code>. Pero siempre llega el momento en el que recuerdo una función que escribí
+        <code>fopen</code> Pero siempre llega el momento en el que recuerdo una función que escribí
         hace semanas… y no tengo ni idea de en qué archivo quedó.
       </p>
 
       <p>
-        Normalmente intentaría algo como <code>grep -r "texto" .</code>, pero eso suele llenar la terminal
+        Normalmente intentaría algo como <code>grep -r "texto" .</code> pero eso suele llenar la terminal
         de resultados difíciles de leer (al menos para mí). Lo que necesitaba era algo más interactivo.
       </p>
 
-      <h3>Mi solución</h3>
+      <h3>La solución</h3>
       <p>
-        Este alias busca texto de forma recursiva usando <code>rg</code>, muestra los resultados con
+        Este alias busca texto de forma recursiva usando <code>rg</code> muestra los resultados con
         <code>fzf</code> y, al presionar Enter, abre el archivo directamente en Nano
         <strong>en la línea exacta donde aparece el texto</strong>.
       </p>
 
       <h3>El código</h3>
       <p>
-        Añado esto a mi <code>.bashrc</code>. Siempre comento el código: no confío en mi memoria a largo plazo.
+        Añado esto a mi <code>.bashrc</code> Siempre comento el código: no confío en mi memoria a largo plazo.
       </p>
 
       <pre><code># rgf - Buscar texto en archivos y abrir en la línea exacta
@@ -109,7 +109,7 @@ rgf() {
       </p>
 
       <p>
-        Este alias funciona especialmente bien con <code>bat</code>, ya que permite una vista previa
+        Este alias funciona especialmente bien con <code>bat</code> ya que permite una vista previa
         con colores y resaltado de la línea actual.
       </p>
 

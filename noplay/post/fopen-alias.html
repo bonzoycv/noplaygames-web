@@ -6,19 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alias fopen: Edición rápida con Nano - No Play Games</title>
   <meta name="description"
-    content="Mi flujo de trabajo para buscar y abrir archivos en Nano instantáneamente usando fzf.">
+    content="Mi flujo de trabajo para buscar y abrir archivos rápidamente usando fzf desde la terminal.">
   <link rel="stylesheet" href="../../style.css" />
   <link rel="icon" type="image/x-icon" href="../../sources/favicon-32x32.png">
 
   <meta property="og:title" content="Alias fopen: Edición rápida con Nano" />
-  <meta property="og:description" content="Cómo uso fzf para encontrar archivos perdidos y abrirlos al instante." />
+  <meta property="og:description" content="Cómo uso fzf para encontrar archivos y abrirlos al instante." />
   <meta property="og:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
   <meta property="og:url" content="https://www.noplaygames.dev/noplay/post/fopen-alias.html" />
   <meta property="og:type" content="article" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Alias fopen: Edición rápida" />
-  <meta name="twitter:description" content="Cómo uso fzf para encontrar archivos perdidos y abrirlos al instante." />
+  <meta name="twitter:description" content="Cómo uso fzf para encontrar archivos y abrirlos al instante." />
   <meta name="twitter:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
 </head>
 
@@ -44,7 +44,6 @@
                 d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
             </svg>
           </a>
-
         </div>
       </ul>
     </nav>
@@ -56,75 +55,73 @@
       <span class="date">2025</span>
 
       <p>
-        Si con <code>fcd</code> solucioné el problema de moverme entre carpetas, con <strong>fopen</strong>
-        solucioné el problema de encontrar qué editar.
+        Si con <code>fcd</code> resolví el problema de moverme entre carpetas, con <strong>fopen</strong>
+        resolví el problema de decidir <em>qué</em> editar.
       </p>
 
       <p>
-        A menudo recuerdo el nombre del archivo (o parte de él), pero rara vez recuerdo en donde lo guardé. Escribir
-        <code>nano ruta/larga/y/olvidada/config.conf</code> al terminar de escribir la ruta, ya había olvidado qué era
-        lo que estaba buscando.
+        A menudo recuerdo el nombre de un archivo (o parte de él), pero casi nunca recuerdo dónde lo guardé.
+        Escribir <code>nano ruta/larga/y/olvidada/config.conf</code> suele terminar en que, cuando llego al final
+        de la ruta, ya olvidé qué estaba buscando.
       </p>
 
-      <h3>Mi Solución</h3>
-      <p>Este alias busca archivos recursivamente desde donde estoy parado, me permite elegir uno con
-        <strong>fzf</strong>
-        y lo abre automáticamente en mi editor preferido (Nano, no me juzguen, nunca he aprendido a usar Vim.).</p>
+      <h3>Mi solución</h3>
+      <p>
+        Este alias busca archivos de forma recursiva desde el directorio actual, me deja elegir uno con
+        <strong>fzf</strong> y lo abre automáticamente en mi editor preferido
+        (<code>nano</code>, no me juzguen, nunca aprendí a usar Vim).
+      </p>
 
-      <h3>El Código</h3>
-      <p>Al igual que el anterior, esto lo agrego en mi <code>.bashrc</code></p>
+      <h3>El código</h3>
+      <p>
+        Al igual que los otros alias, esto lo agrego a mi <code>.bashrc</code>:
+      </p>
 
-      <pre><code># fopen - Buscar archivo y abrirlo con Nano
+      <pre><code># fopen - Buscar un archivo y abrirlo en el editor
+# Requiere: fzf
+
 fopen() {
   local file
-  # -type f: Importante, solo buscamos archivos, no carpetas
-  file=$(find . -maxdepth 5 -type f -not -path '*/.*' | fzf +m) && nano "$file"
-}</code></pre>
-      <br>
+
+  # Buscar solo archivos (ignora carpetas y archivos ocultos)
+  file=$(find . -maxdepth 5 -type f -not -path '*/.*' | fzf)
+
+  # Abrir el archivo solo si seleccioné uno
+  if [ -n "$file" ]; then
+    ${EDITOR:-nano} "$file"
+  fi
+}
+</code></pre>
 
       <p><strong>¿Cómo funciona?</strong></p>
       <ul>
-        <li><code>find .</code>: Empieza a buscar aquí.</li>
-        <li><code>-type f</code>: Ignora las carpetas, solo quiero archivos editables.</li>
-        <li><code>nano "$file"</code>: Si selecciono algo, lo abre. Si cancelo (ESC), no hace nada.</li>
+        <li><code>find .</code>: Empieza a buscar desde el directorio actual.</li>
+        <li><code>-type f</code>: Solo quiero archivos, no carpetas.</li>
+        <li><code>fzf</code>: Me permite filtrar y elegir interactívamente.</li>
+        <li><code>$EDITOR</code>: Abre el archivo con mi editor; si no está definido, usa Nano.</li>
       </ul>
 
-      <br>
       <hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
 
       <p style="font-style: italic; font-size: 0.9rem; color: #7f8c8d;">
-        <strong>Nota:</strong> Esta configuración la encontré originalmente en un blog que, lamentablemente, ya no
-        recuerdo. Aunque no puedo dar el crédito exacto al autor, quería mencionarlo porque fue el recurso clave para
-        empezar con <a href="/noplay/post/fzf.html"><strong>fzf</strong></a>. Tengo algunos alias más que iré
-        compartiendo en futuros artículos.
+        <strong>Nota:</strong> Esta configuración la encontré originalmente en un blog que, lamentablemente,
+        ya no recuerdo. Aunque no puedo dar el crédito exacto al autor, fue el punto de partida para empezar
+        a usar <a href="/noplay/post/fzf.html"><strong>fzf</strong></a>. Tengo más alias de este estilo que iré
+        documentando en futuros artículos.
       </p>
 
       <script src="https://giscus.app/client.js" data-repo="bonzoycv/noplaygames-comentarios"
-        data-repo-id="R_kgDOQlhrmQ" data-category="General" data-category-id="DIC_kwDOQlhrmc4CzlNQ" data-mapping="url"
-        data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom"
-        data-theme="noborder_light" data-lang="es" crossorigin="anonymous" async>
-        </script>
+        data-repo-id="R_kgDOQlhrmQ" data-category="General" data-category-id="DIC_kwDOQlhrmc4CzlNQ"
+        data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0"
+        data-input-position="bottom" data-theme="noborder_light" data-lang="es"
+        crossorigin="anonymous" async>
+      </script>
 
     </article>
   </main>
 
   <footer>
     <p>&copy; 2024 No Play Games Studio. Todos los derechos reservados.</p>
-
-    <div class="social-icons">
-      <a href="https://github.com/bonzoycv" target="_blank" class="social-link" title="GitHub">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-        </svg>
-      </a>
-      <a href="/feed.xml" target="_blank" class="social-link" title="RSS Feed">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z" />
-        </svg>
-      </a>
-    </div>
   </footer>
 
   <script>
