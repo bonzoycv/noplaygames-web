@@ -19,6 +19,14 @@
     </item>
 
     <item>
+        <title>Alias rgf: Buscar dentro de archivos</title>
+        <link>https://noplaygames.dev/noplay/post/fgrep-alias.html</link>
+        <guid>https://noplaygames.dev/noplay/post/fgrep-alias.html</guid>
+        <description>Cómo usar rgf (grep) para encontrar texto dentro de tus archivos.</description>
+        <pubDate>Sat, 10 Dec 2025 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
         <title>Alias fopen: Edición rápida con fzf</title>
         <link>https://www.noplaygames.dev/noplay/post/fopen-alias.html</link>
         <guid>https://www.noplaygames.dev/noplay/post/fopen-alias.html</guid>
