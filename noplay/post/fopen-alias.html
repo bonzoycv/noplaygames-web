@@ -69,12 +69,12 @@
       <p>
         Este alias busca archivos de forma recursiva desde el directorio actual, me deja elegir uno con
         <strong>fzf</strong> y lo abre automáticamente en mi editor preferido
-        (<code>nano</code>, no me juzguen, nunca aprendí a usar Vim).
+        ( no me juzguen, nunca aprendí a usar Vim) <code>nano</code>
       </p>
 
       <h3>El código</h3>
       <p>
-        Al igual que los otros alias, esto lo agrego a mi <code>.bashrc</code>:
+        Al igual que los otros alias, esto lo agrego a mi <code>.bashrc</code>
       </p>
 
       <pre><code># fopen - Buscar un archivo y abrirlo en el editor
@@ -95,10 +95,10 @@ fopen() {
 
       <p><strong>¿Cómo funciona?</strong></p>
       <ul>
-        <li><code>find .</code>: Empieza a buscar desde el directorio actual.</li>
-        <li><code>-type f</code>: Solo quiero archivos, no carpetas.</li>
-        <li><code>fzf</code>: Me permite filtrar y elegir interactívamente.</li>
-        <li><code>$EDITOR</code>: Abre el archivo con mi editor; si no está definido, usa Nano.</li>
+        <li><code>find .</code> Empieza a buscar desde el directorio actual.</li>
+        <li><code>-type f</code> Solo quiero archivos, no carpetas.</li>
+        <li><code>fzf</code> Me permite filtrar y elegir interactívamente.</li>
+        <li><code>$EDITOR</code> Abre el archivo con mi editor; si no está definido, usa Nano.</li>
       </ul>
 
       <hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
