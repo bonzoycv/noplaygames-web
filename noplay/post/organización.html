@@ -43,94 +43,136 @@
     </nav>
   </header>
 
- <main>
-    <article class="blog-entry">
-      <h1>Mi terminal, paso a paso</h1>
-      <span class="date">2025</span>
+<main>
+  <article class="blog-entry">
+    <h1>Cómo organizo mis proyectos para no perder contexto</h1>
+    <span class="date">2025</span>
 
-      <p>
-        Este artículo marca el inicio de una serie personal donde documento cómo voy construyendo
-        mi flujo de trabajo en la terminal. No es una guía definitiva, ni el “setup perfecto”.
-        Es simplemente <strong>cómo yo uso la terminal</strong> y cómo la he ido adaptando despues de años de ensayo y error, probando y desechando configuraciones.
-      </p>
+    <p>
+      Antes de comenzar a configurar mi editor y mi terminal tuve que enfrentarme a algunas preguntas que me llevaron a tomar una decisión ya que 
+      <strong>mi sistema de archivos siempre es un desastre</strong>.
+    </p>
 
-      <p>
-        Durante mucho tiempo usé la terminal solo para lo básico: moverme entre carpetas,
-        editar algún archivo y ejecutar comandos que casi siempre tenía que volver a buscar en Google.
-        Funcionaba, sí, pero era lento y poco cómodo.
-      </p>
+    <p>
+      Cada vez que quería retomar un proyecto antiguo o empezar uno nuevo,
+      aparecía el mismo diálogo mental:
+    </p>
 
-      <p>
-        Esta serie nace justo ahí: del intento de hacer la terminal un lugar más predecible,
-        más rápido y menos frustrante, pero sobre todo porque al momento de necesitar alguna información no recurriria a googlem, sino que utilizaría mi blog como referencia.
-      </p>
+    <ol>
+      <li>¿Dónde guardé ese script? ¿En <b>Documentos</b>, el <b>Escritorio</b> o en <b>/tmp</b>?</li>
+      <li>¿Qué hacía exactamente la carpeta llamada <b>proyecto_final_v2</b>?</li>
+      <li>¿Por qué tardo más en encontrar un archivo que en editarlo?</li>
+    </ol>
+<br>
+    <p>
+      El problema no era la falta de herramientas.
+      Era la falta de contexto.
+      Tenía proyectos mezclados, sin README, con nombres que solo tenían sentido
+      el día que los creé.
+    </p>
 
-      <h3>¿Qué es esta serie?</h3>
-      <p>
-        <strong>“Mi terminal, paso a paso”</strong> es una colección de artículos donde explico,
-        uno por uno, los pequeños cambios que he ido incorporando a mi forma de trabajar en Linux.
-        Alias, funciones, configuraciones mínimas y scripts sencillos.
-      </p>
+    <p>
+      Así que siempre que comienzo un proyecto necesito pensar bien en como voy a organizar mis archivos y carpetas antes de que sea demasiado tarde.
+    </p>
 
-      <p>
-        Nada de magia. Nada de configuraciones imposibles de mantener. No soy un experto y todo lo que aparece aquí es porque lo uso de verdad.
-      </p>
+    <h3>Mi regla de oro: “Si no está en Dev, no existe”</h3>
 
-      <h3>¿Qué no es?</h3>
-      <ul>
-        <li>No es una guía avanzada.</li>
-        <li>No es un tutorial para “ricing” extremo.</li>
-        <li>No es una comparación de editores ni shells.</li>
-      </ul>
+    <p>
+      La primera decisión fue imponer una regla simple y no negociable:
+      todo lo que sea código, scripts o configuraciones debe vivir en un solo lugar.
+      Una única <em>fuente de la verdad</em>.
+    </p>
 
-      <p>
-        Uso <strong>Bash</strong>. Uso <strong>Nano</strong>. Uso herramientas simples.
-        Y, sobre todo, uso cosas que puedo entender cuando vuelvo a leerlas meses después.
-      </p>
+    <p>
+      En mi caso, ese lugar es <code>~/Dev</code>
+    </p>
 
-      <h3>¿Qué voy a documentar?</h3>
-      <p>
-        A lo largo de la serie iré cubriendo temas como:
-      </p>
+    <p>
+      No importa si es un script tonto de cinco líneas o un proyecto grande.
+      Si es código, va ahí.
+      Esto elimina de raíz la pregunta de “¿dónde lo guardé?”.
+      La respuesta siempre es la misma.
+    </p>
 
-      <ul>
-        <li><a href="/noplay/post/organización.html">Organización y contexto.</a></li>
-        <li><a href="/noplay/post/fcd-alias.html">Navegación rápida entre directorios.</a></li>
-        <li><a href="/noplay/post/fopen-alias.html"> Búsqueda y apertura de archivos sin recordar rutas.</a></li>
-        <li><a href="/noplay/post/fgrep-alias.html"> Búsqueda de texto dentro de proyectos.</a></li>
-        <li>Alias y funciones pequeñas pero útiles.</li>
-        <li><a href="/noplay/post/nano-config.html">Configuraciones  mínimas de la terminal y Nano.</a></li>
-        <li><a href="/noplay/post/fedora-update.html">Scripts  simples para tareas repetitivas.</a></li>
-      </ul>
+    <h3>La estructura actual</h3>
 
- 
+    <p>
+      Dentro de <code>~/Dev</code> no tiro cosas al azar.
+      Agrupo los proyectos por su <strong>contexto de vida</strong>,
+      no por tecnología ni por importancia.
+    </p>
 
-      <h3>¿Por qué escribir esto?</h3>
-      <p>
-        Principalmente, porque mi memoria no es confiable.
-        Este blog funciona como mi propia documentación personal.
-      </p>
+    <pre><code>~/Dev
+├── personal
+│   ├── noplaygames-web
+│   ├── dotfiles
+│   └── scripts-lab
+├── godot
+│   ├── game-alpha
+│   └── legacy-app
+└── archivo
+    ├── pruebas
+    └── docs
+</code></pre>
 
-      <p>
-        Si dentro de seis meses reinstalo el sistema o cambio de máquina,
-        quiero poder volver aquí y entender exactamente
-        por qué tengo cierto alias, qué hace y por qué lo escribí así.
-      </p>
+    <p>
+      Esta estructura no es perfecta ni definitiva, quizá mañana cambie todo una vez más.
+      Es simplemente la que hoy me permite saber <em>qué es cada cosa y en qué etapa está</em>.
+    </p>
 
-      <p>
-        Si a alguien más le sirve en el proceso, mucho mejor.
-      </p>
+    <p>
+      Además de la jerarquía, la nomenclatura importa mucho.
+      Aprendí a las malas que los espacios son enemigos de la terminal.
+      Ahora uso exclusivamente <code>"kebab-case"</code>
+    </p>
 
-      <hr class="post-divider">
+    <ul>
+      <li><code>Mi Proyecto Web</code></li>
+      <li><code>mi-proyecto-web</code></li>
+    </ul>
 
-      <p class="editorial-note">
-        <strong>Nota:</strong> Todos los artículos de esta serie estarán pensados para leerse
-        de forma independiente, pero también formarán parte de un flujo de trabajo completo.
-        Iré enlazándolos y actualizándolos conforme aprenda cosas nuevas.
-      </p>
+    <p>
+      Es más rápido de escribir y más cómodo para el autocompletado.
+    </p>
 
-    </article>
-  </main>
+    <h3>Por qué esto importa para la terminal</h3>
+
+    <p>
+      A primera vista, organizar carpetas no parece tener relación
+      con ser más rápido en la terminal.
+      Pero para mí todo se resume en una palabra:
+      <strong>predictibilidad</strong>.
+    </p>
+
+    <p>
+      Mis alias y funciones como <code>fcd</code> funcionan bien porque el terreno donde buscan está claramente delimitado.
+    </p>
+
+    <ol>
+      <li>Le digo al buscador: solo mira dentro de <code>~/Dev</code></li>
+      <li>Elimino ruido: descargas, música, caché, sistema. O sea, no busca en otras carpetas, sino en donde le digo que debe buscar.</li>
+      <li>Cambiar de proyecto deja de ser tedioso y se vuelve algo muy fácil e intuitivo.</li>
+    </ol>
+
+   
+
+    <hr class="post-divider">
+
+    <p class="editorial-note">
+      En el siguiente artículo entro de lleno en la práctica:
+      cómo usar <code><a href="/noplay/post/fcd-alias.html">fcd</a></code> para moverme por esta estructura de carpetas.
+    </p>
+
+    <p class="series-note">
+      Parte de la serie
+      <a href="/noplay/proyectos/my-bash.html">
+        <strong>Mi terminal, paso a paso</strong>
+      </a>
+    </p>
+
+  </article>
+</main>
+
 
     <footer>
         <p>&copy; 2024 No Play Games Studio. Todos los derechos reservados.</p>

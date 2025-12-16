@@ -297,6 +297,45 @@ code {
 }
 
 
+/* === PAGINACIÓN ESTÁTICA === */
+.pagination {
+    display: flex;
+    justify-content: space-between; /* Separa los botones a los extremos */
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #ddd; /* Una línea sutil para separar del contenido */
+}
+
+.page-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--blog-bg);
+    color: var(--text);
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.page-btn:hover {
+    background-color: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Estado deshabilitado (para cuando no hay más páginas) */
+.page-btn.disabled {
+    pointer-events: none; /* Evita que se pueda hacer click */
+    opacity: 0.5;
+    background-color: #f4f4f4;
+    color: #aaa;
+    border-color: #eee;
+    box-shadow: none;
+}
+
 /* === FOOTER === */
 footer {
   background-color: var(--footer-bg);

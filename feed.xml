@@ -11,6 +11,15 @@
     <atom:link href="https://www.noplaygames.dev/feed.xml" rel="self" type="application/rss+xml" />
 
     <item>
+        <title>Mi terminal, paso a paso</title>
+        <link>https://www.noplaygames.dev/noplay/proyectos/my-bash.html</link>
+        <guid>https://www.noplaygames.dev/noplay/proyectos/my-bash.html</guid>
+        <description>Cómo voy construyendo mi flujo de trabajo en la terminal.</description>
+        <pubDate>Thu, 16 Dec 2025 00:00:00 GMT</pubDate>
+    </item>
+
+
+    <item>
         <title>Configurando .nanorc: Potenciando Nano</title>
         <link>https://www.noplaygames.dev/noplay/post/nano-config.html</link>
         <guid>https://www.noplaygames.dev/noplay/post/nano-config.html</guid>
