@@ -4,16 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alias rgf: Buscar texto en archivos - No Play Games</title>
+  <title>Alias fcd: Navegación rápida - No Play Games</title>
   <meta name="description"
-    content="Mi método para encontrar texto dentro de archivos y abrirlos directamente en la línea exacta usando rg, fzf y nano.">
+    content="Mi método para moverme rápidamente entre carpetas usando fzf y fd (o find como respaldo).">
   <link rel="stylesheet" href="../../style.css" />
   <link rel="icon" type="image/x-icon" href="../../sources/favicon-32x32.png">
 
-  <meta property="og:title" content="Alias rgf: Buscar dentro de archivos" />
-  <meta property="og:description"
-    content="Busca texto dentro de cientos de archivos y abre el resultado exacto con Nano usando rg y fzf." />
+  <meta property="og:title" content="Alias fcd: Navegación rápida" />
+  <meta property="og:description" content="Cómo uso fzf para moverme entre carpetas sin escribir rutas largas." />
   <meta property="og:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
+  <meta property="og:url" content="https://www.noplaygames.dev/noplay/post/fcd-alias.html" />
+  <meta property="og:type" content="article" />
 </head>
 
 <body>
@@ -25,7 +26,7 @@
     <nav>
       <div class="menu-toggle" id="mobile-menu">&#9776;</div>
       <ul class="nav-links" id="nav-links">
-        <li><a href="/index.html">Inicio</a></li>        
+        <li><a href="/index.html">Inicio</a></li>
         <li><a href="/noplay/proyectos.html">Proyectos</a></li>
         <li><a href="/noplay/perfil.html">Perfil</a></li>
         <li><a href="/noplay/contacto.html">Contacto</a></li>
@@ -42,98 +43,92 @@
     </nav>
   </header>
 
-  <main>
+ <main>
     <article class="blog-entry">
-      <h1>Alias rgf: Buscar dentro de archivos</h1>
+      <h1>Mi terminal, paso a paso</h1>
       <span class="date">2025</span>
 
-          <p class="series-note"> Este alias forma  parte de la serie <a href="/noplay/proyectos/my-bash.html">
-    <strong>Mi terminal, paso a paso</strong>
-    </a>
-    </p>
-
       <p>
-        Ya aprendí a moverme por la terminal con <code>fcd</code> y a abrir archivos por nombre usando
-        <code>fopen</code> Pero siempre llega el momento en el que recuerdo una función que escribí
-        hace semanas… y no tengo ni idea de en qué archivo quedó.
+        Este artículo marca el inicio de una serie personal donde documento cómo voy construyendo
+        mi flujo de trabajo en la terminal. No es una guía definitiva, ni el “setup perfecto”.
+        Es simplemente <strong>cómo yo uso la terminal</strong> y cómo la he ido adaptando despues de años de ensayo y error, probando y desechando configuraciones.
       </p>
 
       <p>
-        Normalmente intentaría algo como <code>grep -r "texto" .</code> pero eso suele llenar la terminal
-        de resultados difíciles de leer (al menos para mí). Lo que necesitaba era algo más interactivo.
-      </p>
-
-      <h3>La solución</h3>
-      <p>
-        Este alias busca texto de forma recursiva usando <code>rg</code> muestra los resultados con
-        <code>fzf</code> y, al presionar Enter, abre el archivo directamente en Nano
-        <strong>en la línea exacta donde aparece el texto</strong>.
-      </p>
-
-      <h3>El código</h3>
-      <p>
-        Añado esto a mi <code>.bashrc</code> Siempre comento el código: no confío en mi memoria a largo plazo.
-      </p>
-
-      <pre><code># rgf - Buscar texto en archivos y abrir en la línea exacta
-# Requiere: rg (ripgrep), fzf, bat y nano (o $EDITOR)
-
-rgf() {
-  # Si no paso texto a buscar, muestro ayuda
-  if [ -z "$1" ]; then
-    echo "Uso: rgf &lt;texto_a_buscar&gt;"
-    return 1
-  fi
-
-  # Buscar texto con rg y enviar los resultados a fzf
-  local out
-  out=$(rg -n "$1" 2&gt;/dev/null | \
-    fzf --preview 'bat --color=always {1} --highlight-line {2}' \
-        --preview-window=right:60%:wrap)
-
-  # Si seleccioné un resultado, extraigo archivo y línea
-  if [ -n "$out" ]; then
-    local file line
-    file=$(echo "$out" | cut -d: -f1)
-    line=$(echo "$out" | cut -d: -f2)
-
-    # Abrir el editor en la línea exacta
-    ${EDITOR:-nano} "+$line" "$file"
-  fi
-}
-</code></pre>
-
-      <h3>¿Cómo lo uso?</h3>
-      <p>Simplemente escribo en la terminal:</p>
-      <pre><code>rgf "function iniciar"</code></pre>
-
-      <p>
-        Aparece una lista interactiva con todas las coincidencias. Elijo una, presiono Enter
-        y empiezo a editar justo donde lo necesito.
+        Durante mucho tiempo usé la terminal solo para lo básico: moverme entre carpetas,
+        editar algún archivo y ejecutar comandos que casi siempre tenía que volver a buscar en Google.
+        Funcionaba, sí, pero era lento y poco cómodo.
       </p>
 
       <p>
-        Este alias funciona especialmente bien con <code>bat</code> ya que permite una vista previa
-        con colores y resaltado de la línea actual.
+        Esta serie nace justo ahí: del intento de hacer la terminal un lugar más predecible,
+        más rápido y menos frustrante, pero sobre todo porque al momento de necesitar alguna información no recurriria a googlem, sino que utilizaría mi blog como referencia.
+      </p>
+
+      <h3>¿Qué es esta serie?</h3>
+      <p>
+        <strong>“Mi terminal, paso a paso”</strong> es una colección de artículos donde explico,
+        uno por uno, los pequeños cambios que he ido incorporando a mi forma de trabajar en Linux.
+        Alias, funciones, configuraciones mínimas y scripts sencillos.
+      </p>
+
+      <p>
+        Nada de magia. Nada de configuraciones imposibles de mantener. No soy un experto y todo lo que aparece aquí es porque lo uso de verdad.
+      </p>
+
+      <h3>¿Qué no es?</h3>
+      <ul>
+        <li>No es una guía avanzada.</li>
+        <li>No es un tutorial para “ricing” extremo.</li>
+        <li>No es una comparación de editores ni shells.</li>
+      </ul>
+
+      <p>
+        Uso <strong>Bash</strong>. Uso <strong>Nano</strong>. Uso herramientas simples.
+        Y, sobre todo, uso cosas que puedo entender cuando vuelvo a leerlas meses después.
+      </p>
+
+      <h3>¿Qué voy a documentar?</h3>
+      <p>
+        A lo largo de la serie iré cubriendo temas como:
+      </p>
+
+      <ul>
+        <li><a href="/noplay/post/fcd-alias.html">Navegación rápida entre directorios.</a></li>
+        <li><a href="/noplay/post/fopen-alias.html"> y apertura de archivos sin recordar rutas.</a></li>
+        <li><a href="/noplay/post/fgrep-alias.html"> de texto dentro de proyectos.</a></li>
+        <li>Alias y funciones pequeñas pero útiles.</li>
+        <li><a href="/noplay/post/nano-config.html"> mínimas de la terminal y Nano.</a></li>
+        <li><a href="/noplay/post/fedora-update.html">simples para tareas repetitivas.</a></li>
+      </ul>
+
+      <p>
+        Cada artículo resuelve un problema concreto. Nada más.
+      </p>
+
+      <h3>¿Por qué escribir esto?</h3>
+      <p>
+        Principalmente, porque mi memoria no es confiable.
+        Este blog funciona como mi propia documentación personal.
+      </p>
+
+      <p>
+        Si dentro de seis meses reinstalo el sistema o cambio de máquina,
+        quiero poder volver aquí y entender exactamente
+        por qué tengo cierto alias, qué hace y por qué lo escribí así.
+      </p>
+
+      <p>
+        Si a alguien más le sirve en el proceso, mucho mejor.
       </p>
 
       <hr class="post-divider">
 
       <p class="editorial-note">
-        <strong>Nota:</strong> Esta configuración la encontré originalmente en un blog que,
-        lamentablemente, ya no recuerdo. Aunque no puedo dar el crédito exacto,
-        fue el punto de partida para empezar a usar <a href="/noplay/post/fzf.html"><strong>fzf</strong></a>.
-        Tengo más alias de este estilo que iré documentando en futuros artículos.
+        <strong>Nota:</strong> Todos los artículos de esta serie estarán pensados para leerse
+        de forma independiente, pero también formarán parte de un flujo de trabajo completo.
+        Iré enlazándolos y actualizándolos conforme aprenda cosas nuevas.
       </p>
-
-      <section id="comments">
-        <script src="https://giscus.app/client.js" data-repo="bonzoycv/noplaygames-comentarios"
-          data-repo-id="R_kgDOQlhrmQ" data-category="General" data-category-id="DIC_kwDOQlhrmc4CzlNQ"
-          data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0"
-          data-input-position="bottom" data-theme="noborder_light" data-lang="es"
-          crossorigin="anonymous" async>
-        </script>
-      </section>
 
     </article>
   </main>

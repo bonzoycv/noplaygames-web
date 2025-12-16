@@ -239,10 +239,13 @@ main {
 
 /* === CÓDIGO E IMÁGENES DENTRO DE POSTS === */
 pre {
-  white-space: pre-wrap;
+  white-space: pre;
   word-wrap: break-word;
   overflow-x: auto;
   max-width: 100%;
+  margin-bottom: 1.5rem;
+    border: 1px solid var(--code-border);
+
 }
 
 pre code {
@@ -252,21 +255,8 @@ pre code {
   border: none; /* El borde lo maneja el 'code' base o el pre si quisieras */
 }
 
-/* .cmd-preview {
-    display: block; 
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 0;
-    color: var(--text) !important; 
-    background-color: var(--code-bg);
-    border: 1px solid var(--code-border);
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-family: 'Consolas', monospace;
-    font-size: 0.9em;
-}
 
-/* code {
+code {
   display: block;
   padding: 1em;
   background-color: var(--code-bg);
@@ -274,16 +264,7 @@ pre code {
   border-radius: 4px;
   font-family: 'Consolas', monospace;
   font-size: 14px;
-} */ 
-
-code {
-  font-family: 'Consolas', monospace;
-  font-size: 0.9em; /* Un poco más pequeño que el texto normal */
-  background-color: var(--code-bg);
-  border: 1px solid var(--code-border);
-  border-radius: 4px;
-  padding: 2px 6px; /* Padding pequeño para no romper la línea */
-  display: inline-block; /* IMPORTANTE: Ya no es block */
+  min-width: 100%; 
 }
 
 .blog-entry img, .img-dungeon {
@@ -293,6 +274,28 @@ code {
   height: auto;
   border-radius: 4px;
 }
+
+/* === ESTILOS ESPECÍFICOS PARA ARTÍCULOS Y NOTAS === */
+
+/* Modificador para quitar el margen de los iconos cuando están en el menú */
+.social-icons-nav {
+  margin-top: 0 !important;
+}
+
+/* Línea separadora sutil para el final de los artículos */
+.post-divider {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 2rem 0;
+}
+
+/* Estilo para notas aclaratorias o pies de página en artículos */
+.editorial-note {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
 
 /* === FOOTER === */
 footer {
