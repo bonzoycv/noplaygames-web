@@ -336,6 +336,12 @@ code {
     box-shadow: none;
 }
 
+
+/* en mi forma de contacto. Ocultar honeypot de spam */
+.honey-trap {
+    display: none;
+}
+
 /* === FOOTER === */
 footer {
   background-color: var(--footer-bg);
