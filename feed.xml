@@ -18,13 +18,20 @@
         <pubDate>Thu, 16 Dec 2025 00:00:00 GMT</pubDate>
     </item>
 
-
     <item>
         <title>Configurando .nanorc: Potenciando Nano</title>
         <link>https://www.noplaygames.dev/noplay/post/nano-config.html</link>
         <guid>https://www.noplaygames.dev/noplay/post/nano-config.html</guid>
         <description>Cómo convierto Nano en un editor de código decente sin instalar nada extra.</description>
         <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+        <title>Alias mkcd: crear y entrar en un solo paso</title>
+        <link>https://www.noplaygames.dev/noplay/post/mkcd-alias.html</link>
+        <guid>https://www.noplaygames.dev/noplay/noplay/post/mkcd-alias.html</guid>
+        <description>Cómo uso mkcd para crear una carpeta nueva y entrar en ella.</description>
+        <pubDate>Thu, 18 Dec 2025 00:00:00 GMT</pubDate>
     </item>
 
     <item>
@@ -73,7 +80,7 @@
         <guid>https://www.noplaygames.dev/noplay/post/organización.html</guid>
         <description>Cómo organizo mis proyectos para no perder contexto</description>
         <pubDate>Wed, 03 Dec 2025 00:00:00 GMT</pubDate>
-    </item>
+        </item>
 
 </channel>
 </rss>

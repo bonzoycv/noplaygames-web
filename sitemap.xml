@@ -7,8 +7,13 @@
       <priority>1.0</priority>
    </url>
 
+  <url>
+      <loc>https://www.noplaygames.dev/noplay/post/mkcd-alias.html</loc>
+      <lastmod>2025-12-18</lastmod>
+      <priority>0.9</priority>
+   </url>
 
-      <url>
+   <url>
       <loc>https://www.noplaygames.dev/noplay/proyectos/my-bash.html</loc>
       <lastmod>2025-12-16</lastmod>
       <priority>0.9</priority>

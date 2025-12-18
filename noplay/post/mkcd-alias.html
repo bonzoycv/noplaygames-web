@@ -4,16 +4,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alias rgf: Buscar texto en archivos - No Play Games</title>
-  <meta name="description"
-    content="Mi método para encontrar texto dentro de archivos y abrirlos directamente en la línea exacta usando rg, fzf y nano.">
+  <title>Introducción a fzf: Búsquedas rápidas - No Play Games</title>
+  <meta name="description" content="Cómo empecé a usar fzf, la herramienta de búsqueda difusa, para mejorar mi productividad en Fedora y Arch Linux.">
   <link rel="stylesheet" href="../../style.css" />
   <link rel="icon" type="image/x-icon" href="../../sources/favicon-32x32.png">
 
-  <meta property="og:title" content="Alias rgf: Buscar dentro de archivos" />
-  <meta property="og:description"
-    content="Busca texto dentro de cientos de archivos y abre el resultado exacto con Nano usando rg y fzf." />
+  <meta property="og:title" content="Introducción a fzf: Búsquedas rápidas" />
+  <meta property="og:description" content="Mis primeros pasos con fzf en el terminal de Linux." />
   <meta property="og:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
+  <meta property="og:url" content="https://www.noplaygames.dev/noplay/post/fzf.html" />
+  <meta property="og:type" content="article" />
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Introducción a fzf" />
+  <meta name="twitter:description" content="Mis primeros pasos con fzf en el terminal de Linux." />
+  <meta name="twitter:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
 </head>
 
 <body>
@@ -45,95 +50,78 @@
     </nav>
   </header>
 
-  <main>
-    <article class="blog-entry">
-      <h1>Alias rgf: Buscar dentro de archivos</h1>
-      <span class="date">2025</span>
+<main>
+  <article class="blog-entry">
+    <h1>Alias mkcd: crear y entrar en un solo paso</h1>
+    <span class="date">2025</span>
+    <p>
+      Crear una carpeta para un proyecto nuevo y entrar en ella siempre son dos comandos. Siempre iguales.
+    </p>
+    <pre><code>mkdir nuevo-proyecto
+cd nuevo-proyecto</code></pre>
+    <p>
+      No es complicado, pero es repetitivo.
+    </p>
+    <h3>La solución</h3>
+    <p>
+      Un alias que hace ambas cosas en un solo comando:
+    </p>
+    <pre><code># mkcd - crear una carpeta y entrar en ella
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}</code></pre>
+    <p>
+      Ahora solo escribo:
+    </p>
+    <pre><code>mkcd nuevo-proyecto</code></pre>
+    <p>
+      Y ya estoy dentro, listo para trabajar.
+    </p>
+    <h3>¿Cuándo lo uso?</h3>
+    <p>
+      Cada vez que empiezo algo nuevo:
+    </p>
+    <ul>
+      <li>Un proyecto de prueba</li>
+      <li>Una carpeta para organizar archivos</li>
+      <li>Un directorio temporal para experimentar</li>
+    </ul>
 
+    <br>
 
+    <p>
+      Es simple, pero efectiva. Cuesta un poco acostumbrarse, 
+      en especial después de tantos años haciendo estos pasos de la manera tradicional, 
+      pero una vez que te acostumbras, realmente vale la pena.
+      Este es uno de esos alias pequeños que usas tanto que olvidas cómo trabajabas antes sin él.
+    </p>
 
-      <p>
-        Ya aprendí a moverme por la terminal con <code>fcd</code> y a abrir archivos por nombre usando
-        <code>fopen</code> Pero siempre llega el momento en el que recuerdo una función que escribí
-        hace semanas… y no tengo ni idea de en qué archivo quedó.
-      </p>
-
-      <p>
-        Normalmente intentaría algo como <code>grep -r "texto" .</code> pero eso suele llenar la terminal
-        de resultados difíciles de leer (al menos para mí). Lo que necesitaba era algo más interactivo.
-      </p>
-
-      <h3>La solución</h3>
-      <p>
-        Este alias busca texto de forma recursiva usando <code>rg</code> muestra los resultados con
-        <code>fzf</code> y, al presionar Enter, abre el archivo directamente en Nano
-        <strong>en la línea exacta donde aparece el texto</strong>.
-      </p>
-
-      <h3>El código</h3>
-      <p>
-        Añado esto a mi <code>.bashrc</code> Siempre comento el código: no confío en mi memoria a largo plazo.
-      </p>
-
-      <pre><code># rgf - Buscar texto en archivos y abrir en la línea exacta
-# Requiere: rg (ripgrep), fzf, bat y nano (o $EDITOR)
-
-rgf() {
-  # Si no paso texto a buscar, muestro ayuda
-  if [ -z "$1" ]; then
-    echo "Uso: rgf &lt;texto_a_buscar&gt;"
-    return 1
-  fi
-
-  # Buscar texto con rg y enviar los resultados a fzf
-  local out
-  out=$(rg -n "$1" 2&gt;/dev/null | \
-    fzf --preview 'bat --color=always {1} --highlight-line {2}' \
-        --preview-window=right:60%:wrap)
-
-  # Si seleccioné un resultado, extraigo archivo y línea
-  if [ -n "$out" ]; then
-    local file line
-    file=$(echo "$out" | cut -d: -f1)
-    line=$(echo "$out" | cut -d: -f2)
-
-    # Abrir el editor en la línea exacta
-    ${EDITOR:-nano} "+$line" "$file"
-  fi
-}
-</code></pre>
-
-      <h3>¿Cómo lo uso?</h3>
-      <p>Simplemente escribo en la terminal:</p>
-      <pre><code>rgf "function iniciar"</code></pre>
-
-      <p>
-        Aparece una lista interactiva con todas las coincidencias. Elijo una, presiono Enter
-        y empiezo a editar justo donde lo necesito.
-      </p>
-
-      <p>
-        Este alias funciona especialmente bien con <code>bat</code> ya que permite una vista previa
-        con colores y resaltado de la línea actual.
-      </p>
-
-      <hr class="post-divider">
-
-  
+   
+    <hr class="post-divider">
     <p class="editorial-note">
       <strong>Nota:</strong> Este artículo forma parte de la serie
       <a href="/noplay/proyectos/my-bash.html">
     <strong>Mi terminal, paso a paso</strong></a>, donde documento los alias y funciones
       que realmente uso en mi día a día.</p>
+      <p>He creado artículos separados para mis alias favoritos como <a href="/noplay/post/fcd-alias.html"><strong>fcd</strong></a> y <a href="/noplay/post/fopen-alias.html"><strong>fopen</strong></a>. Puedes encontrarlos en la sección de artículos.</p>
+      <br>
+   
 
-      <section id="comments">
-        <script src="https://giscus.app/client.js" data-repo="bonzoycv/noplaygames-comentarios"
-          data-repo-id="R_kgDOQlhrmQ" data-category="General" data-category-id="DIC_kwDOQlhrmc4CzlNQ"
-          data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0"
-          data-input-position="bottom" data-theme="noborder_light" data-lang="es"
-          crossorigin="anonymous" async>
-        </script>
-      </section>
+      <script src="https://giscus.app/client.js"
+        data-repo="bonzoycv/noplaygames-comentarios"
+        data-repo-id="R_kgDOQlhrmQ"
+        data-category="General"
+        data-category-id="DIC_kwDOQlhrmc4CzlNQ"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="noborder_light"
+        data-lang="es"
+        crossorigin="anonymous"
+        async>
+      </script>
 
     </article>
   </main>
@@ -163,5 +151,4 @@ rgf() {
     });
   </script>
 </body>
-
 </html>
