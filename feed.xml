@@ -10,7 +10,27 @@
     <lastBuildDate>Thu, 11 Dec 2025 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://www.noplaygames.dev/feed.xml" rel="self" type="application/rss+xml" />
 
+
+
     <item>
+        <title>Alias fh: buscar en el historial con fzf</title>
+        <link>https://www.noplaygames.dev/noplay/post/fhistory-alias.html</link>
+        <guid>https://www.noplaygames.dev/noplay/post/fhistory-alias.html</guid>
+        <description>Cómo uso fzf para buscar comandos anteriores en el historial sin volver a escribirlos.</description>
+        <pubDate>Fri, 19 Dec 2025 00:00:00 GMT</pubDate>
+    </item>
+
+
+
+    <item>
+        <title>Alias mkcd: crear y entrar en un solo paso</title>
+        <link>https://www.noplaygames.dev/noplay/post/mkcd-alias.html</link>
+        <guid>https://www.noplaygames.dev/noplay/noplay/post/mkcd-alias.html</guid>
+        <description>Cómo uso mkcd para crear una carpeta nueva y entrar en ella.</description>
+        <pubDate>Thu, 18 Dec 2025 00:00:00 GMT</pubDate>
+    </item>
+
+        <item>
         <title>Mi terminal, paso a paso</title>
         <link>https://www.noplaygames.dev/noplay/proyectos/my-bash.html</link>
         <guid>https://www.noplaygames.dev/noplay/proyectos/my-bash.html</guid>
@@ -24,14 +44,6 @@
         <guid>https://www.noplaygames.dev/noplay/post/nano-config.html</guid>
         <description>Cómo convierto Nano en un editor de código decente sin instalar nada extra.</description>
         <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
-    </item>
-
-    <item>
-        <title>Alias mkcd: crear y entrar en un solo paso</title>
-        <link>https://www.noplaygames.dev/noplay/post/mkcd-alias.html</link>
-        <guid>https://www.noplaygames.dev/noplay/noplay/post/mkcd-alias.html</guid>
-        <description>Cómo uso mkcd para crear una carpeta nueva y entrar en ella.</description>
-        <pubDate>Thu, 18 Dec 2025 00:00:00 GMT</pubDate>
     </item>
 
     <item>
