@@ -13,6 +13,17 @@
 
 
     <item>
+        <title>Alias vs función en Bash: cuándo uso cada uno</title>
+        <link>https://www.noplaygames.dev/noplay/post/alias-vs-funcion.html</link>
+        <guid>https://www.noplaygames.dev/noplay/post/alias-vs-funcion.html</guid>
+        <description>
+        Cuándo uso alias y cuándo funciones en Bash, explicado desde la experiencia y sin complicarme.
+        </description>
+        <pubDate>Mon, 12 Jan 2026 00:00:00 GMT</pubDate>
+    </item>
+
+
+    <item>
         <title>Alias fh: buscar en el historial con fzf</title>
         <link>https://www.noplaygames.dev/noplay/post/fhistory-alias.html</link>
         <guid>https://www.noplaygames.dev/noplay/post/fhistory-alias.html</guid>

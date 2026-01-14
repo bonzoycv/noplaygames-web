@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="canonical" href="https://www.noplaygames.dev/noplay/post/alias-vs-funcion.html">
+
+  <title>Alias vs función en Bash: cuándo uso cada uno - No Play Games</title>
+
+  <meta name="description"
+    content="Cuándo uso alias y cuándo uso funciones en Bash, desde la experiencia y sin complicarme." />
+
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="icon" type="image/x-icon" href="../../sources/favicon-32x32.png" />
+
+  <meta property="og:title" content="Alias vs función en Bash" />
+  <meta property="og:description"
+    content="Mi criterio práctico para decidir entre alias y funciones en la terminal." />
+  <meta property="og:image"
+    content="https://www.noplaygames.dev/sources/social_preview.png" />
+  <meta property="og:url"
+    content="https://www.noplaygames.dev/noplay/post/alias-vs-funcion.html" />
+  <meta property="og:type" content="article" />
+</head>
+
+<body>
+  <header>
+    <div id="logo">
+      <a href="/index.html">
+        <img src="../../sources/no_play_logo.webp" alt="Logo de No Play Games" />
+      </a>
+      No Play Games
+    </div>
+
+    <nav>
+      <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/index.html">Inicio</a></li>
+        <li><a href="/noplay/proyectos.html">Proyectos</a></li>
+        <li><a href="/noplay/perfil.html">Sobre Mí</a></li>
+        <li><a href="/noplay/contacto.html">Contacto</a></li>
+
+        <div class="social-icons social-icons-nav">
+          <a href="https://github.com/bonzoycv" target="_blank"
+             class="social-link" title="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8
+              8.207 11.387.599.111.793-.261.793-.577v-2.234
+              c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387
+              -1.333-1.756-1.333-1.756-1.089-.745.083-.729
+              .083-.729 1.205.084 1.839 1.237 1.839 1.237
+              1.07 1.834 2.807 1.304 3.492.997.107-.775
+              .418-1.305.762-1.604-2.665-.305-5.467-1.334
+              -5.467-5.931 0-1.311.469-2.381 1.236-3.221
+              -.124-.303-.535-1.524.117-3.176 0 0 1.008
+              -.322 3.301 1.23.957-.266 1.983-.399 3.003
+              -.404 1.02.005 2.047.138 3.006.404 2.291
+              -1.552 3.297-1.23 3.297-1.23.653 1.653
+              .242 2.874.118 3.176.77.84 1.235 1.911
+              1.235 3.221 0 4.609-2.807 5.624-5.479
+              5.921.43.372.823 1.102.823 2.222v3.293
+              c0 .319.192.694.801.576 4.765-1.589
+              8.199-6.086 8.199-11.386 0-6.627-5.373
+              -12-12-12z" />
+            </svg>
+          </a>
+        </div>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article class="blog-entry">
+      <h1>Alias vs función en Bash</h1>
+      <span class="date">2025</span>
+
+      <p>
+        Esta duda es bastante común y me la hago seguido:
+        ¿uso un alias o escribo una función?
+      </p>
+
+      <p>
+        Al principio usaba alias para todo, porque es más fácil y rápido.
+        Luego descubrí las funciones y quise convertir todo en funciones.
+      </p>
+
+      <p>
+        Con el tiempo entendí algo más simple:
+        no hay una respuesta correcta. Todo depende del contexto
+        y de lo que soy capaz de entender en ese momento.
+      </p>
+
+      <h3>¿Cuándo uso alias?</h3>
+      <p>
+        Normalmente uso alias cuando el comando es:
+      </p>
+
+      <ul>
+        <li>Corto</li>
+        <li>Directo</li>
+        <li>Sin lógica interna</li>
+      </ul>
+
+      <p>Ejemplo:</p>
+
+      <pre><code>alias ll='ls -lah'</code></pre>
+
+      <p>
+        No recibe parámetros ni toma decisiones.
+        Solo ahorra escritura.
+      </p>
+
+      <h3>¿Cuándo uso funciones?</h3>
+      <p>
+        Uso funciones cuando necesito:
+      </p>
+
+      <ul>
+        <li>Recibir parámetros</li>
+        <li>Tomar decisiones</li>
+        <li>Encadenar varios comandos</li>
+      </ul>
+
+      <p>Un ejemplo simple:</p>
+
+      <pre><code>fcd() {
+  cd "$(find . -type d | fzf)"
+}</code></pre>
+
+      <p>
+        Aquí ya hay búsqueda, selección y ejecución.
+        Esto es más que un simple atajo.
+      </p>
+
+      <h3>Cómo entender esta función sin complicarse</h3>
+
+      <p>
+        Con <code>fcd() { ... }</code> defino una función llamada <code>fcd</code>.
+        El nombre es intencional: <strong>f</strong> viene de <code>fzf</code>
+        y <strong>cd</strong> de cambiar de directorio.
+      </p>
+
+      <p>
+        Luego aparece <code>find . -type d</code>.  
+        Esto significa: busca (<code>find</code>) desde el directorio actual
+        (<code>.</code>) y muestra solo carpetas (<code>-type d</code>).
+      </p>
+
+      <p>
+        El símbolo <code>|</code> (pipe) le dice a Bash:
+        toma el resultado de la izquierda y pásalo al comando de la derecha.
+        En este caso, ese comando es <code>fzf</code>.
+      </p>
+
+      <p>
+        <code>fzf</code> muestra esa lista de carpetas y permite filtrarlas
+        escribiendo unas pocas letras en tiempo real.
+      </p>
+
+      <p>
+        La parte <code>$( ... )</code> se llama sustitución de comando.
+        Básicamente significa:
+        <em>"ejecuta esto primero y usa su resultado aquí"</em>.
+      </p>
+
+      <p>
+        Entonces, al escribir <code>fcd</code>, aparece una lista interactiva
+        de carpetas. Elijo una, presiono Enter y Bash entra directamente en ella.
+      </p>
+
+      <p>
+        En palabras simples, toda la función hace algo como:
+        <strong>
+          “Busca todas las carpetas desde aquí, muéstramelas con fzf,
+          deja que yo elija una y luego entra en ella”.
+        </strong>
+      </p>
+
+      <h3>Mi regla personal</h3>
+      <p>
+        Si el comando empieza a crecer o necesito explicarlo,
+        probablemente ya no sea un alias.
+      </p>
+
+      <p>
+        Por ahora no creo funciones demasiado complejas.
+        Voy ampliándolas poco a poco, a medida que entiendo
+        cómo mejorarlas.
+      </p>
+
+      <p>
+        Si lo puedo leer meses después y entenderlo rápido,
+        entonces está bien escrito.
+      </p>
+
+      <p>
+        No busco elegancia.
+        Busco volver a mi <code>.bashrc</code>
+        y entender qué hace cada cosa.
+      </p>
+
+      <p>
+        Si mañana un alias se convierte en función, está bien.
+        El flujo de trabajo manda.
+      </p>
+
+      <hr class="post-divider">
+
+      <p class="editorial-note">
+        <strong>Nota:</strong> Este artículo forma parte de la serie
+        <a href="/noplay/proyectos/my-bash.html">
+          <strong>Mi terminal, paso a paso</strong>
+        </a>.
+        Escribo esto porque ya me equivoqué antes (varias veces)
+        y así no tengo que pensar lo mismo dos veces.
+      </p>
+
+      <hr class="post-divider">
+
+      <script src="https://giscus.app/client.js"
+        data-repo="bonzoycv/noplaygames-comentarios"
+        data-repo-id="R_kgDOQlhrmQ"
+        data-category="General"
+        data-category-id="DIC_kwDOQlhrmc4CzlNQ"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="noborder_light"
+        data-lang="es"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 No Play Games Studio. Todos los derechos reservados.</p>
+
+    <p class="visit-count">
+      Visitas: <span id="contador-numero">...</span>
+    </p>
+
+    <div class="social-icons">
+      <a href="https://github.com/bonzoycv" target="_blank"
+         class="social-link" title="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302
+          3.438 9.8 8.207 11.387.599.111.793-.261
+          .793-.577v-2.234c-3.338.726-4.033-1.416
+          -4.033-1.416-.546-1.387-1.333-1.756
+          -1.333-1.756-1.089-.745.083-.729
+          .083-.729 1.205.084 1.839 1.237
+          1.839 1.237 1.07 1.834 2.807
+          1.304 3.492.997.107-.775.418
+          -1.305.762-1.604-2.665-.305
+          -5.467-1.334-5.467-5.931
+          0-1.311.469-2.381 1.236-3.221
+          -.124-.303-.535-1.524.117-3.176
+          0 0 1.008-.322 3.301 1.23
+          .957-.266 1.983-.399 3.003-.404
+          1.02.005 2.047.138 3.006.404
+          2.291-1.552 3.297-1.23 3.297-1.23
+          .653 1.653.242 2.874.118 3.176
+          .77.84 1.235 1.911 1.235 3.221
+          0 4.609-2.807 5.624-5.479 5.921
+          .43.372.823 1.102.823 2.222v3.293
+          c0 .319.192.694.801.576
+          4.765-1.589 8.199-6.086
+          8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+      </a>
+
+      <a href="/feed.xml" target="_blank"
+         class="social-link" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.18 15.64a2.18 2.18 0 1 1 0 4.36
+          2.18 2.18 0 0 1 0-4.36M4 4.44v2.83
+          c7.03 0 12.73 5.7 12.73 12.73h2.83
+          c0-8.59-6.97-15.56-15.56-15.56z
+          m0 5.66v2.83c3.9 0 7.07 3.17
+          7.07 7.07h2.83c0-5.47-4.43-9.9
+          -9.9-9.9z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("mobile-menu");
+    const navLinks = document.getElementById("nav-links");
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("showing");
+    });
+  </script>
+</body>
+
+</html>
