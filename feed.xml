@@ -12,6 +12,19 @@
 
 
 
+
+
+    <item>
+        <title>ls automático al usar cd en Bash</title>
+        <link>https://www.noplaygames.dev/noplay/post/cd-ls-automatico.html</link>
+        <guid>https://www.noplaygames.dev/noplay/post/cd-ls-automatico.html</guid>
+        <description>
+        Cómo modifiqué cd para mostrar automáticamente el contenido del directorio al entrar, sin romper el comportamiento estándar.
+        </description>
+        <pubDate>Mon, 14 Jan 2026 00:00:00 GMT</pubDate>
+    </item>
+
+
     <item>
         <title>Alias vs función en Bash: cuándo uso cada uno</title>
         <link>https://www.noplaygames.dev/noplay/post/alias-vs-funcion.html</link>

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="canonical" href="https://www.noplaygames.dev/noplay/post/cd-ls-automatico.html">
+
+  <title>ls automático al usar cd en Bash - No Play Games</title>
+
+  <meta name="description"
+    content="Cómo modifiqué cd para mostrar automáticamente el contenido del directorio al entrar, sin romper el comportamiento estándar." />
+
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="icon" type="image/x-icon" href="../../sources/favicon-32x32.png" />
+
+  <meta property="og:title" content="ls automático al usar cd en Bash" />
+  <meta property="og:description"
+    content="Una pequeña mejora a cd para ver el contenido del directorio sin escribir ls cada vez." />
+  <meta property="og:image"
+    content="https://www.noplaygames.dev/sources/social_preview.png" />
+  <meta property="og:url"
+    content="https://www.noplaygames.dev/noplay/post/cd-ls-automatico.html" />
+  <meta property="og:type" content="article" />
+</head>
+
+<body>
+  <header>
+    <div id="logo">
+      <a href="/index.html">
+        <img src="../../sources/no_play_logo.webp" alt="Logo de No Play Games" />
+      </a>
+      No Play Games
+    </div>
+
+    <nav>
+      <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/index.html">Inicio</a></li>
+        <li><a href="/noplay/proyectos.html">Proyectos</a></li>
+        <li><a href="/noplay/perfil.html">Sobre Mí</a></li>
+        <li><a href="/noplay/contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article class="blog-entry">
+      <h1>ls automático al usar cd</h1>
+      <span class="date">2026</span>
+
+      <p>
+        Esto es una de esas mejoras pequeñas que no parecen importantes,
+        pero cuando te acostumbras, no quieres volver atrás.
+      </p>
+
+      <p>
+        Cada vez que entro a un directorio con <code>cd</code>,
+        casi siempre lo siguiente que escribo es <code>ls</code>
+      </p>
+
+      <p>
+        Así que me hice una pregunta sencilla:
+        ¿por qué no hacer que <code>cd</code> muestre automáticamente
+        el contenido del directorio?
+      </p>
+
+      <h3>La idea</h3>
+
+      <p>
+        La idea es simple:
+        cambiar de directorio y ver inmediatamente qué hay dentro,
+        sin escribir nada más.
+      </p>
+
+      <p>
+        Para lograrlo, redefiní <code>cd</code> usando una función.
+      </p>
+
+      <h3>La función</h3>
+
+      <pre><code>cd() {
+  new_directory="$*"
+
+  if [ $# -eq 0 ]; then
+    new_directory="${HOME}"
+  fi
+
+  builtin cd "${new_directory}" && ls
+}</code></pre>
+
+      <p>
+        A primera vista puede parecer complicado,
+        pero en realidad es más simple de lo que parece.
+      </p>
+
+      <h3>Qué hace esta función</h3>
+
+      <p>
+        Esta función reemplaza el comportamiento normal de <code>cd</code>
+        por uno ligeramente mejorado:
+        cambia de directorio y luego ejecuta <code>ls</code>
+      </p>
+
+      <p>
+        Si el cambio de directorio falla,
+        <code>ls</code> no se ejecuta.
+      </p>
+
+      <h3>Desarmando la función paso a paso</h3>
+
+      <p>
+        Primero se define la función <code>cd()</code>
+        Esto hace que Bash use esta versión en lugar del comando original.
+      </p>
+
+      <p>
+        La variable <code>new_directory</code> guarda el destino
+        al que quiero moverme.
+        Uso <code>$*</code> para capturar lo que escribo
+        después de <code>cd</code>
+      </p>
+
+      <p>
+        Luego viene esta condición:
+      </p>
+
+      <pre><code>if [ $# -eq 0 ]; then
+  new_directory="${HOME}"
+fi</code></pre>
+
+      <p>
+        Esto mantiene el comportamiento clásico:
+        si escribo solo <code>cd</code>
+        Bash me lleva a mi carpeta personal.
+      </p>
+
+      <p>
+        La línea más importante es esta:
+      </p>
+
+      <pre><code>builtin cd "${new_directory}"</code></pre>
+
+      <p>
+        Uso <code>builtin cd</code> para asegurarme
+        de llamar al <code>cd</code> original de Bash
+        y no a esta misma función.
+      </p>
+
+      <p>
+        Sin eso, entraría en un bucle infinito.
+      </p>
+
+      <p>
+        Finalmente, si el cambio de directorio fue exitoso,
+        se ejecuta un simple <code>ls</code>
+      </p>
+
+      <p>
+        No uso opciones especiales a propósito:
+        así respeto los aliases y configuraciones
+        que ya tenga definidos en el sistema.
+      </p>
+
+      <h3>Por qué me gusta esta versión</h3>
+
+      <ul>
+        <li>No rompe el comportamiento estándar de <code>cd</code></li>
+        <li>Respeta aliases y configuraciones de <code>ls</code></li>
+        <li>Reduce comandos repetitivos</li>
+        <li>Es fácil de entender y mantener</li>
+      </ul>
+
+      <p>
+        No es algo revolucionario,
+        pero mejora un poco la experiencia diaria.
+      </p>
+
+      <h3>Una advertencia</h3>
+
+      <p>
+        Esta función no es para todo el mundo.
+        Si prefieres una terminal silenciosa
+        al entrar a carpetas, probablemente no te guste.
+      </p>
+
+      <p>
+        En mi caso, ver el contenido de inmediato
+        me ayuda a orientarme mejor.
+      </p>
+
+      <hr class="post-divider">
+
+      <p class="editorial-note">
+        <strong>Nota:</strong> Este artículo forma parte de la serie
+        <a href="/noplay/proyectos/my-bash.html">
+          <strong>Mi terminal, paso a paso</strong>
+        </a>.
+        Escribo estas cosas porque las uso,
+        y porque si no las anoto, después se me olvidan.
+      </p>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 No Play Games Studio. Todos los derechos reservados.</p>
+
+    <div class="social-icons">
+      <a href="https://github.com/bonzoycv" target="_blank"
+         class="social-link" title="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12
+          0 5.302 3.438 9.8 8.207 11.387
+          .599.111.793-.261.793-.577v-2.234
+          c-3.338.726-4.033-1.416-4.033-1.416
+          -.546-1.387-1.333-1.756-1.333-1.756
+          -1.089-.745.083-.729.083-.729
+          1.205.084 1.839 1.237 1.839 1.237
+          1.07 1.834 2.807 1.304 3.492.997
+          .107-.775.418-1.305.762-1.604
+          -2.665-.305-5.467-1.334-5.467-5.931
+          0-1.311.469-2.381 1.236-3.221
+          -.124-.303-.535-1.524.117-3.176
+          0 0 1.008-.322 3.301 1.23
+          .957-.266 1.983-.399 3.003-.404
+          1.02.005 2.047.138 3.006.404
+          2.291-1.552 3.297-1.23 3.297-1.23
+          .653 1.653.242 2.874.118 3.176
+          .77.84 1.235 1.911 1.235 3.221
+          0 4.609-2.807 5.624-5.479 5.921
+          .43.372.823 1.102.823 2.222v3.293
+          c0 .319.192.694.801.576
+          4.765-1.589 8.199-6.086
+          8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("mobile-menu");
+    const navLinks = document.getElementById("nav-links");
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("showing");
+    });
+  </script>
+</body>
+
+</html>
