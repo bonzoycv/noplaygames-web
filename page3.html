@@ -23,7 +23,7 @@
     <meta name="twitter:image" content="https://www.noplaygames.dev/sources/social_preview.png" />
 
     <link rel="alternate" type="application/rss+xml" title="No Play Games RSS Feed" href="/feed.xml" />
-    <link rel="canonical" href="https://www.noplaygames.dev/index.html">
+    <link rel="canonical" href="https://www.noplaygames.dev/page3.html">
 
 </head>
 
@@ -37,7 +37,7 @@
       <div class="menu-toggle" id="mobile-menu">&#9776;</div>
       <ul class="nav-links" id="nav-links">
         <li><a href="/index.html">Inicio</a></li>
-        
+
         <li><a href="/noplay/proyectos.html">Proyectos</a></li>
 
         <li><a href="/noplay/perfil.html">Sobre Mí</a></li>
@@ -62,73 +62,24 @@
 
         <div class="articles-grid">
 
-<!-- Este artículo debe quedar fijado en el index, solo copiar y pegar en page2.html los 5 artículos siguientes.  -->
-            <article class="blog-entry">
-                <span class="date"></span>
-                <h3><a href="/noplay/proyectos/my-bash.html">Mi terminal, paso a paso</a></h3>
-                <p>Cómo voy construyendo mi flujo de trabajo en la terminal.</p>
-                <a href="/noplay/proyectos/my-bash.html" class="read-more">Leer entrada &rarr;</a>
-            </article>
-<!-- Este artículo debe quedar fijado en el index, solo copiar y pegar en page2.html los 5 artículos siguientes.  -->
-
-            <article class="blog-entry">
-                <span class="date">9 de marzo, 2026</span>
-                <h3><a href="/noplay/post/bat.html">bat: un cat con superpoderes</a></h3>
-                <p>Reemplazo moderno de cat con syntax highlighting, numeración de líneas e integración con git.</p>
-                <a href="/noplay/post/bat.html" class="read-more">Leer entrada &rarr;</a>
-            </article>
-
-            <article class="blog-entry">
-                <span class="date">2026</span>
-                <h3><a href="/noplay/post/cd-ls-automatico.html">Alias vs función en Bash</a></h3>
-                <p>Como modificar 'cd' para mostrar ls de manera automática.</p>
-                <a href="/noplay/post/cd-ls-automatico.html" class="read-more">Leer entrada &rarr;</a>
-            </article>
-
-              <article class="blog-entry">
-                <span class="date">2026</span>
-                <h3><a href="/noplay/post/alias-vs-funcion.html">Alias vs función en Bash</a></h3>
-                <p>Como determino cuando debo usar un alias o una función.</p>
-                <a href="/noplay/post/alias-vs-funcion.html" class="read-more">Leer entrada &rarr;</a>
-            </article>
-
-            <article class="blog-entry">
-                <span class="date">2026</span>
-                <h3><a href="/noplay/post/fhistory-alias.html">Alias fh: buscar en el historial con fzf</a></h3>
-                <p>Encuentra un comando en el historial de Bash con fzf.</p>
-                <a href="/noplay/post/fhistory-alias.html" class="read-more">Leer entrada &rarr;</a>
-            </article>
-
-
             <article class="blog-entry">
                 <span class="date">2025</span>
-                <h3><a href="/noplay/post/nano-config.html">Configurando .nanorc</a></h3>
-                <p>Una de las primeras configuraciones que hago al instalar un nuevo sistema Linux es configurar mis
-                    dotfiles...</p>
-                <a href="/noplay/post/nano-config.html" class="read-more">Leer entrada &rarr;</a>
+                <h3><a href="/noplay/post/organización.html">Organizando archivos y carpetas</a></h3>
+                <p>Cómo organizo mis proyectos para no perder contexto</p>
+                <a href="/noplay/post/organización.html" class="read-more">Leer entrada &rarr;</a>
             </article>
-
-
-
-
-
-
-
-
 
         </div>
 
         <div class="pagination">
-    <a href="#" class="page-btn disabled">&larr; Anteriores</a>
-    
-    <a href="page2.html" class="page-btn">Siguientes &rarr;</a>
+    <a href="page2.html" class="page-btn">&larr; Anteriores</a>
+    <a href="#" class="page-btn disabled">Siguientes &rarr;</a>
 </div>
 
     </main>
 
-        <footer>
+    <footer>
         <p>&copy; 2024 No Play Games Studio. Todos los derechos reservados.</p>
-        
 
 
         <div class="social-icons">
@@ -157,7 +108,6 @@
                 return response.text();
             })
             .then(numero => {
-                // Solo mostramos si es un número válido
                 if (!isNaN(numero) && numero.trim() !== "") {
                     document.getElementById('contador-numero').innerText = numero;
                 }
