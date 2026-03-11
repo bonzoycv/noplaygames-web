@@ -7,11 +7,12 @@
 
 html, body {
   height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-  background-color: #f4f6f8; 
-  color: #333;
-  scroll-behavior: smooth; 
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
@@ -19,28 +20,53 @@ body {
   flex-direction: column;
 }
 
-/* === VARIABLES CSS (:root) === */
+/* === VARIABLES CSS (:root) - Light Theme === */
 :root {
   --bg: #f4f6f8;
   --text: #2d3436;
-  --header-bg: #1e1e1e; 
+  --text-secondary: #555;
+  --header-bg: #1e1e1e;
   --header-text: #fff;
   --link: #636e72;
-  --accent: #0984e3; 
+  --accent: #0984e3;
   --blog-bg: #ffffff;
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05); 
-  --shadow-hover: 0 12px 24px rgba(0,0,0,0.1); 
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-hover: 0 8px 20px rgba(0,0,0,0.12);
   --code-bg: #f4f4f4;
-  --code-border: #ddd;
+  --code-border: #e0e0e0;
+  --code-text: #4a5568;
   --footer-bg: #1e1e1e;
   --footer-text: #b2bec3;
+  --border: rgba(0,0,0,0.08);
+  --radius: 6px;
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === DARK THEME === */
+[data-theme="dark"] {
+  --bg: #121212;
+  --text: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --header-bg: #0d0d0d;
+  --header-text: #e0e0e0;
+  --link: #a0a0a0;
+  --accent: #4da6ff;
+  --blog-bg: #1e1e1e;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
+  --shadow-hover: 0 8px 20px rgba(0,0,0,0.4);
+  --code-bg: #1a1a1a;
+  --code-border: #333;
+  --code-text: #b0b0b0;
+  --footer-bg: #0d0d0d;
+  --footer-text: #666;
+  --border: rgba(255,255,255,0.08);
 }
 
 /* === ESTILO DE ENLACES GENERALES === */
 a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.2s; 
+  transition: color var(--transition);
 }
 
 a:hover {
@@ -56,7 +82,8 @@ header {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
 }
 
 #logo {
@@ -72,16 +99,56 @@ header {
   margin-right: 12px;
 }
 
+/* === TOGGLE DARK MODE === */
+#theme-toggle {
+  background: transparent;
+  border: 1px solid var(--footer-text);
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  color: var(--header-text);
+  margin-left: 1rem;
+  z-index: 1001;
+  position: relative;
+}
+
+#theme-toggle:hover {
+  background-color: rgba(255,255,255,0.1);
+  border-color: var(--header-text);
+}
+
+#theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+#theme-toggle .icon-sun {
+  display: none;
+}
+
+[data-theme="dark"] #theme-toggle .icon-moon {
+  display: none;
+}
+
+[data-theme="dark"] #theme-toggle .icon-sun {
+  display: block;
+}
+
 nav ul {
   list-style-type: none;
   display: flex;
-  gap: 1.5rem; 
+  gap: 1.5rem;
 }
 
 nav ul li a {
   color: #b2bec3;
   font-weight: 500;
   font-size: 0.95rem;
+  transition: color var(--transition);
 }
 
 nav ul li a:hover {
@@ -93,7 +160,7 @@ nav ul li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem; /* Espacio entre los iconos */
+    gap: 1.5rem;
     margin-top: 15px;
 }
 
@@ -102,22 +169,22 @@ nav ul li a:hover {
     align-items: center;
     justify-content: center;
     padding: 5px;
-    transition: transform 0.2s ease;
+    transition: transform var(--transition);
 }
 
 .social-link svg {
-    fill: #b2bec3; /* Color gris por defecto */
-    transition: fill 0.3s ease;
-    width: 24px;  /* Tamaño fijo para asegurar consistencia */
+    fill: #b2bec3;
+    transition: fill var(--transition);
+    width: 24px;
     height: 24px;
 }
 
 .social-link:hover {
-    transform: scale(1.15); /* Efecto de zoom leve */
+    transform: scale(1.15);
 }
 
 .social-link:hover svg {
-    fill: #ffffff; /* Se ilumina en blanco al pasar el mouse */
+    fill: #ffffff;
 }
 
 /* Ajuste específico para móvil (si es necesario) */
@@ -169,7 +236,7 @@ nav ul li a:hover {
 main {
   flex: 1;
   padding: 3rem 2rem;
-  max-width: 1100px; 
+  max-width: 1100px;
   margin: 0 auto;
   width: 100%;
 }
@@ -178,38 +245,38 @@ main {
 .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem; 
+    gap: 1.5rem;
     width: 100%;
 }
 
 /* === TARJETAS DE ARTÍCULOS (.blog-entry) === */
 .blog-entry {
   background-color: var(--blog-bg);
-  padding: 2rem;
-  border-radius: 12px;
+  padding: 1.5rem;
+  border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(0,0,0,0.03);
+  border: 1px solid var(--border);
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   height: 100%;
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+  transition: transform var(--transition), box-shadow var(--transition), background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .blog-entry:hover {
-  transform: translateY(-6px); 
-  box-shadow: var(--shadow-hover); 
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
   border-color: transparent;
 }
 
 .blog-entry h3 {
-  margin: 0.5rem 0 1rem 0;
-  font-size: 1.4rem;
+  margin: 0.5rem 0 0.75rem 0;
+  font-size: 1.3rem;
   line-height: 1.3;
 }
 
 .blog-entry .date {
-  font-size: 0.85rem;
-  color: #999;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
@@ -218,9 +285,9 @@ main {
 
 .blog-entry p {
   line-height: 1.6;
-  color: #555;
-  flex-grow: 1; 
-  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+  flex-grow: 1;
+  margin-bottom: 1rem;
 }
 
 /* Botón "Leer más" */
@@ -244,15 +311,14 @@ pre {
   overflow-x: auto;
   max-width: 100%;
   margin-bottom: 1.5rem;
-    border: 1px solid var(--code-border);
-
+  border: 1px solid var(--code-border);
 }
 
 pre code {
-  display: block; /* Aquí sí queremos que ocupe todo el ancho */
+  display: block;
   padding: 1em;
-  overflow-x: auto; /* Scroll si es muy largo */
-  border: none; /* El borde lo maneja el 'code' base o el pre si quisieras */
+  overflow-x: auto;
+  border: none;
 }
 
 
@@ -261,10 +327,12 @@ code {
   padding: 1em;
   background-color: var(--code-bg);
   border: 1px solid var(--code-border);
-  border-radius: 4px;
-  font-family: 'Consolas', monospace;
+  border-radius: var(--radius);
+  font-family: 'IBM Plex Mono', 'Consolas', monospace;
   font-size: 14px;
-  min-width: 100%; 
+  min-width: 100%;
+  color: var(--code-text);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .blog-entry img, .img-dungeon {
@@ -300,10 +368,10 @@ code {
 /* === PAGINACIÓN ESTÁTICA === */
 .pagination {
     display: flex;
-    justify-content: space-between; /* Separa los botones a los extremos */
+    justify-content: space-between;
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid #ddd; /* Una línea sutil para separar del contenido */
+    border-top: 1px solid var(--border);
 }
 
 .page-btn {
@@ -311,10 +379,10 @@ code {
     padding: 10px 20px;
     background-color: var(--blog-bg);
     color: var(--text);
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all var(--transition);
     box-shadow: var(--shadow-sm);
 }
 
@@ -350,6 +418,7 @@ footer {
   padding: 2rem;
   font-size: 0.9rem;
   margin-top: auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* === CONTADOR DE VISITAS === */
@@ -379,12 +448,13 @@ footer {
 .contact-form textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background-color: #f9f9f9;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background-color: var(--bg);
     font-family: inherit;
     font-size: 1rem;
-    transition: border 0.3s, box-shadow 0.3s;
+    transition: border 0.3s, box-shadow 0.3s, background-color 0.3s;
+    color: var(--text);
 }
 
 .contact-form input:focus, 
@@ -392,7 +462,7 @@ footer {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.1);
-    background-color: #fff;
+    background-color: var(--blog-bg);
 }
 
 .contact-form button {
@@ -400,7 +470,7 @@ footer {
     color: white;
     padding: 12px 20px;
     border: none;
-    border-radius: 6px;
+    border-radius: var(--radius);
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
@@ -409,7 +479,7 @@ footer {
 }
 
 .contact-form button:hover {
-    background-color: #0069d9; /* Un azul un poco más oscuro */
+    background-color: #0069d9;
     transform: translateY(-2px);
 }
 

@@ -4,9 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+        const saved = localStorage.getItem('theme');
+        if (saved) document.documentElement.setAttribute('data-theme', saved);
+    </script>
     <title>Linux Dotfiles: Mis configuraciones - No Play Games</title>
     <meta name="description" content="Archivos de configuración (dotfiles) para Fedora, Bash y Nano.">
     <link rel="stylesheet" href="../../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../../sources/favicon-32x32.png">
 
     <link rel="canonical" href="https://www.noplaygames.dev/linux-dotfiles.html">
@@ -18,6 +25,12 @@
         <div id="logo">
             <a href="/index.html"><img src="../../sources/no_play_logo.webp" alt="Logo de No Play Games" /></a>No Play Games
         </div>
+
+        <button id="theme-toggle" aria-label="Cambiar tema">
+            <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+            <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+
     <nav>
       <div class="menu-toggle" id="mobile-menu">&#9776;</div>
       <ul class="nav-links" id="nav-links">
@@ -44,9 +57,7 @@
     <main>
         <div class="project-intro">
             <h1>Linux Dotfiles</h1>
-            <p>
-                La verdadera potencia de Linux reside en sus archivos de texto. Aquí comparto mis configuraciones personales (dotfiles) para hacer el sistema más mío.
-            </p>
+
         </div>
 
         <div class="articles-grid">
@@ -86,6 +97,25 @@
         menuToggle.addEventListener("click", () => {
             navLinks.classList.toggle("showing");
         });
+    </script>
+    <script>
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            if (!toggle) return;
+            
+            const html = document.documentElement;
+            const saved = localStorage.getItem('theme');
+            if (saved) {
+                html.setAttribute('data-theme', saved);
+            }
+            
+            toggle.addEventListener('click', function() {
+                const current = html.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+            });
+        })();
     </script>
 </body>
 </html>
