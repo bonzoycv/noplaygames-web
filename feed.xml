@@ -7,12 +7,16 @@
     <link>https://www.noplaygames.dev</link>
     <description>Blog de Linux, Fedora, Arch y Scripting en Bash.</description>
     <language>es-es</language>
-    <lastBuildDate>Thu, 11 Dec 2025 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://www.noplaygames.dev/feed.xml" rel="self" type="application/rss+xml" />
 
-
-
-
+    <item>
+        <title>bat: un cat con superpoderes</title>
+        <link>https://www.noplaygames.dev/noplay/post/bat.html</link>
+        <guid>https://www.noplaygames.dev/noplay/post/bat.html</guid>
+        <description>Reemplazo moderno de cat con syntax highlighting, numeración de líneas e integración con git.</description>
+        <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
 
     <item>
         <title>ls automático al usar cd en Bash</title>
