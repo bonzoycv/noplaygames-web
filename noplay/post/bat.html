@@ -35,7 +35,6 @@
         <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
         <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
     </button>
-
     <nav>
       <div class="menu-toggle" id="mobile-menu">&#9776;</div>
       <ul class="nav-links" id="nav-links">
@@ -57,13 +56,13 @@
 
   <main>
     <article class="blog-entry">
-      <h1><strong>bat</strong>: un cat repotenciado</h1>
-      <span class="date">2026</span>
+      <h1><strong>bat</strong>: un <code>cat</code> con superpoderes</h1>
+      <span class="date">9 de marzo, 2026</span>
 
       <p>
         Como todo nuevo usuario al comenzar a usar cualquier distro Linux, comencé utilizando el comando <strong>cat</strong> para echar un vistazo rápido a archivos desde la terminal.
         Funciona, sí, es suficiente para este tipo de tareas rápidas, claro, pero es bastante "feo" por llamarlo alguna manera. Buscando y leyendo otros blogs un día encontré y probé
-        <strong>bat</strong>. Es básicamente <code>cat</code> pero con syntax
+        <strong>bat</strong>. Es básicamente <code>cat</code>, pero con syntax
         highlighting, numeración de líneas y hasta integración con <code>git</code> para mostrarte
         qué líneas cambiaron.
       </p>
@@ -75,6 +74,7 @@
       <p><strong>En Fedora:</strong></p>
       <pre><code>sudo dnf install bat</code></pre>
       <br>
+
       <p><strong>En Ubuntu:</strong></p>
       <pre><code>sudo apt install bat</code></pre>
       <p>aunque en Ubuntu y sus derivadas el comando para ejecutar es batcat, podemos hacer esto más fácil y directo creando un alias. De esta manera llamaremos a batcat escribiendo solo bat como en Arch o Fedora. </p>
@@ -94,6 +94,7 @@
       <p>Si quiero ver un script de bash o un archivo de configuración sin que pagine (útil cuando lo
       encadeno con otras cosas), uso <code>--style</code></p>
       <pre><code>bat --style=plain ~/.bashrc</code></pre>
+
 
 
       <p>También lo uso dentro de un pipeline para que la salida de otro comando tenga color al
@@ -189,6 +190,7 @@
       navLinks.classList.toggle("showing");
     });
   </script>
+
   <script>
     (function() {
       const toggle = document.getElementById('theme-toggle');
@@ -208,5 +210,6 @@
       });
     })();
   </script>
+
 </body>
 </html>
