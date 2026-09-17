@@ -1,0 +1,109 @@
+#!/bin/bash
+
+# --- CONFIGURACIÓN ---
+# 1. Rutas y Credenciales
+SERVER_IP="158.101.196.133"
+REMOTE_USER="ubuntu"
+SSH_KEY="$HOME/.ssh/noplaygames.key"
+LOCAL_DIR="/home/bonzoycv/proyectos/noplaygames-web/"
+
+# 2. Rutas Remotas
+STAGING_DIR="~/sitio_staging/"
+FINAL_DIR="/var/www/noplaygames.dev/html/"
+
+# --- COLORES ---
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${YELLOW}  Iniciando despliegue a NoPlayGames.dev${NC}"
+echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+
+# --- FASE 0: Respaldo en GitHub y GitLab ---
+echo -e "\n${CYAN}[0/3] Respaldando en GitHub y GitLab...${NC}"
+
+cd "$LOCAL_DIR"
+
+# Comprueba si hay cambios sin commitear
+if [ -n "$(git status --porcelain)" ]; then
+    # Pide mensaje de commit o usa uno automático con la fecha
+    echo -e "${CYAN}Hay cambios sin guardar. Introduce el mensaje del commit (Enter para usar la fecha):${NC}"
+    read -r COMMIT_MSG
+    if [ -z "$COMMIT_MSG" ]; then
+        COMMIT_MSG="Actualización $(date '+%Y-%m-%d %H:%M')"
+    fi
+
+    git add .
+    git commit -m "$COMMIT_MSG"
+
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}✗ Error al crear el commit.${NC}"
+        exit 1
+    fi
+else
+    echo -e "${GREEN}✓ Sin cambios locales pendientes — el repo ya está al día.${NC}"
+fi
+
+# Push a GitHub
+echo -e "${CYAN}  → Subiendo a GitHub...${NC}"
+git push origin main 2>&1
+if [ $? -ne 0 ]; then
+    echo -e "${RED}✗ Error al subir a GitHub. Revisa tu conexión o credenciales SSH.${NC}"
+    exit 1
+fi
+echo -e "${GREEN}  ✓ GitHub actualizado.${NC}"
+
+# Push a GitLab
+echo -e "${CYAN}  → Subiendo a GitLab...${NC}"
+git push gitlab main 2>&1
+if [ $? -ne 0 ]; then
+    echo -e "${RED}✗ Error al subir a GitLab. Revisa tu conexión o credenciales SSH.${NC}"
+    exit 1
+fi
+echo -e "${GREEN}  ✓ GitLab actualizado.${NC}"
+
+# --- FASE 1: Subir archivos a Staging ---
+echo -e "\n${GREEN}[1/3] Sincronizando archivos al servidor (Staging)...${NC}"
+
+rsync -avz -e "ssh -i $SSH_KEY" \
+    --exclude 'deploy.sh' \
+    --exclude '.git' \
+    --exclude '*.swp' \
+    --exclude '.DS_Store' \
+    --exclude 'implementation_plan.md' \
+    --delete \
+    "$LOCAL_DIR" \
+    "$REMOTE_USER@$SERVER_IP:$STAGING_DIR"
+
+if [ $? -ne 0 ]; then
+    echo -e "${RED}✗ Error al subir archivos. Verifica tu llave SSH o conexión.${NC}"
+    exit 1
+fi
+echo -e "${GREEN}  ✓ Staging sincronizado.${NC}"
+
+# --- FASE 2: Mover a Producción ---
+echo -e "\n${GREEN}[2/3] Publicando en el servidor web...${NC}"
+
+ssh -i "$SSH_KEY" -t "$REMOTE_USER@$SERVER_IP" "
+    sudo rsync -a --delete $STAGING_DIR $FINAL_DIR
+    sudo chown -R www-data:www-data $FINAL_DIR
+    sudo chmod -R 755 $FINAL_DIR
+    echo '  Archivos en producción y permisos ajustados.'
+"
+
+if [ $? -ne 0 ]; then
+    echo -e "${RED}✗ Error al mover archivos a producción.${NC}"
+    exit 1
+fi
+
+# --- FASE 3: Confirmación ---
+echo -e "\n${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${GREEN}[3/3] ¡Despliegue completado con éxito! ✓${NC}"
+echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "  GitHub  → https://github.com/bonzoycv/noplaygames-web"
+echo -e "  GitLab  → https://gitlab.com/bonzoycv/noplaygames-web"
+echo -e "  Web     → https://www.noplaygames.dev"
+echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
