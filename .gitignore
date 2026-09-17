@@ -1,0 +1,14 @@
+# Ignorar llaves SSH
+*.key
+*.pem
+
+# Ignorar script de despliegue con datos del servidor
+deploy.sh
+
+# Ignorar archivos del sistema o temporales
+.DS_Store
+*.swp
+*~
+
+# Ignorar la carpeta temporal de staging (si se crea localmente)
+sitio_staging/

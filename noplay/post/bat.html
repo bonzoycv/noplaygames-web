@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function() {
+      let saved = localStorage.getItem('theme_v2');
+      if (!saved) {
+        localStorage.setItem('theme', 'dark');
+        localStorage.setItem('theme_v2', 'dark');
+        saved = 'dark';
+      } else {
+        saved = localStorage.getItem('theme') || 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+  <title>bat: un cat con superpoderes — No Play Games</title>
+  <meta name="description"
+    content="Reemplazo moderno de cat con syntax highlighting, numeración de líneas e integración con git.">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/x-icon" href="/sources/favicon-32x32.png">
+
+  <meta property="og:title" content="bat: un cat con superpoderes — No Play Games" />
+  <meta property="og:description" content="Reemplazo moderno de cat con syntax highlighting." />
+  <meta property="og:url" content="https://www.noplaygames.dev/noplay/post/bat.html" />
+  <meta property="og:type" content="article" />
+
+  <link rel="canonical" href="https://www.noplaygames.dev/noplay/post/bat.html">
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <div class="header-top">
+        <nav>
+          <ul>
+            <li><a href="/index.html">Inicio</a></li>
+            <li><a href="/noplay/proyectos.html">Proyectos</a></li>
+            <li><a href="/noplay/perfil.html">Sobre Mí</a></li>
+            <li><a href="/noplay/contacto.html">Contacto</a></li>
+            <li><a href="/feed.xml">RSS</a></li>
+            <li><a href="https://github.com/bonzoycv" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </nav>
+
+        <button id="theme-toggle" aria-label="Cambiar tema">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+
+      <div class="site-branding">
+        <a href="/index.html" class="brand-title-wrap">
+          <img src="/sources/no_play_logo.webp" alt="Logo de No Play Games" class="site-logo" />
+          <span class="site-title">No Play Games</span>
+        </a>
+        <p class="site-tagline">Mis notas digitales.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <article class="post-content">
+        <header class="post-header">
+          <h1>bat: un <code>cat</code> con superpoderes</h1>
+          <span class="post-meta">Publicado el 9 de marzo, 2026</span>
+        </header>
+
+        <p>
+          Como todo nuevo usuario al comenzar a usar cualquier distro Linux, comencé utilizando el comando
+          <code>cat</code> para echar un vistazo rápido a archivos desde la terminal.
+          Funciona, sí, es suficiente para este tipo de tareas rápidas, pero es bastante plano. Buscando y leyendo otros blogs un día encontré y probé
+          <strong>bat</strong>. Es básicamente <code>cat</code>, pero con syntax highlighting, numeración de líneas e integración con <code>git</code> para mostrarte qué líneas cambiaron.
+        </p>
+
+        <h2>Instalación</h2>
+        <p><strong>En Arch Linux:</strong></p>
+        <pre><code>sudo pacman -S bat</code></pre>
+
+        <p><strong>En Fedora:</strong></p>
+        <pre><code>sudo dnf install bat</code></pre>
+
+        <p><strong>En Ubuntu / Debian:</strong></p>
+        <pre><code>sudo apt install bat</code></pre>
+        <p>
+          En Ubuntu y sus derivadas el binario se instala como <code>batcat</code>. Podemos solucionar esto creando un alias sencillo en Bash:
+        </p>
+        <pre><code>echo 'alias bat="batcat"' >> ~/.bashrc
+source ~/.bashrc</code></pre>
+
+        <h2>Ejemplos de uso</h2>
+        <p>El uso básico es idéntico a <code>cat</code>:</p>
+        <pre><code>bat archivo.py</code></pre>
+
+        <p>Si quiero ver un script de bash o un archivo de configuración sin que pagine, uso <code>--style=plain</code>:</p>
+        <pre><code>bat --style=plain ~/.bashrc</code></pre>
+
+        <p>También lo uso dentro de un pipeline para aplicar color a la salida de otros comandos:</p>
+        <pre><code>cat /var/log/syslog | bat -l log</code></pre>
+        <p>
+          Al recibir datos por pipe, <strong>bat</strong> no conoce la extensión del archivo original. Usando <code>-l log</code> le indicamos expresamente que aplique el resaltado sintáctico de archivos log.
+        </p>
+
+        <h2>Conclusión</h2>
+        <p>
+          El resaltado de sintaxis me ahorra esfuerzo al inspeccionar código rápidamente en la terminal. Por estos motivos <strong>bat</strong> es una de las primeras utilidades que instalo en cualquier sistema Linux.
+        </p>
+
+        <!-- Bloque de comentarios Giscus -->
+        <div style="margin-top: 2.5rem;">
+          <script src="https://giscus.app/client.js" data-repo="bonzoycv/noplaygames-comentarios"
+            data-repo-id="R_kgDOQlhrmQ" data-category="General" data-category-id="DIC_kwDOQlhrmc4CzlNQ" data-mapping="url"
+            data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom"
+            data-theme="noborder_dark" data-lang="es" crossorigin="anonymous" async>
+          </script>
+        </div>
+
+        <div class="post-footer">
+          <p><strong>¿Te ha gustado este artículo?</strong></p>
+          <p>Puedes compartir tu opinión en los comentarios o conectar a través de mis redes:</p>
+          <ul class="post-footer-links">
+            <li><a href="https://github.com/bonzoycv" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="/noplay/contacto.html">Contacto</a></li>
+            <li><a href="/feed.xml">RSS Feed</a></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 No Play Games — Mis notas digitales.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+      const html = document.documentElement;
+
+      toggle.addEventListener('click', function () {
+        const current = html.getAttribute('data-theme') || 'dark';
+        const next = current === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        localStorage.setItem('theme_v2', 'user_choice');
+      });
+    })();
+  </script>
+
+</body>
+
+</html>

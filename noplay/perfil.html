@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+        (function() {
+            let saved = localStorage.getItem('theme_v2');
+            if (!saved) {
+                localStorage.setItem('theme', 'dark');
+                localStorage.setItem('theme_v2', 'dark');
+                saved = 'dark';
+            } else {
+                saved = localStorage.getItem('theme') || 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', saved);
+        })();
+    </script>
+    <title>No Play Games — Sobre Mí</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="icon" type="image/x-icon" href="/sources/favicon-32x32.png">
+    <link rel="canonical" href="https://www.noplaygames.dev/noplay/perfil.html">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <nav>
+                    <ul>
+                        <li><a href="/index.html">Inicio</a></li>
+                        <li><a href="/noplay/proyectos.html">Proyectos</a></li>
+                        <li><a href="/noplay/perfil.html" class="active">Sobre Mí</a></li>
+                        <li><a href="/noplay/contacto.html">Contacto</a></li>
+                        <li><a href="/feed.xml">RSS</a></li>
+                        <li><a href="https://github.com/bonzoycv" target="_blank" rel="noopener">GitHub</a></li>
+                    </ul>
+                </nav>
+
+                <button id="theme-toggle" aria-label="Cambiar tema">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
+            </div>
+
+            <div class="site-branding">
+                <a href="/index.html" class="brand-title-wrap">
+                    <img src="/sources/no_play_logo.webp" alt="Logo de No Play Games" class="site-logo" />
+                    <span class="site-title">No Play Games</span>
+                </a>
+                <p class="site-tagline">Mis notas digitales.</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <article class="post-content">
+                <header class="post-header">
+                    <h1>Sobre Mí</h1>
+                </header>
+
+                <p>
+                    ¡Hola! Soy <strong>bonzoycv</strong>. Escritor ocasional, apasionado del cacharreo digital y
+                    aficionado a explorar la tecnología sin complicaciones excesivas.
+                </p>
+
+                <!-- Autorretrato Pixel Art centrado entre la presentación y el resto -->
+                <div style="text-align: center; margin: 2.5rem 0 2rem 0;">
+                    <img src="/sources/ycv.png" alt="Autorretrato Pixel Art de bonzoycv" style="max-height: 180px; width: auto; image-rendering: pixelated; border-radius: 6px; display: inline-block;" />
+                </div>
+
+                <h2>¿Qué es No Play Games?</h2>
+                <p>
+                    Este sitio es mi libreta de apuntes pública y mi respaldo mental. Mi memoria no siempre guarda todos los pasos
+                    o comandos de una configuración, así que este blog funciona como mi propia documentación.
+                </p>
+
+                <p>
+                    Aquí escribo sobre cualquier tema que despierte mi curiosidad: desde servidores domésticos Proxmox, Docker, 
+                    mi sistema PikaOS, la terminal en Linux, hasta reflexiones sobre tecnología o proyectos personales.
+                </p>
+
+                <h2>Filosofía: El Jardín Digital Minimalista</h2>
+                <p>
+                    Creo en la web limpia y directa. Sin anuncios, sin distracciones y enfocada en lo verdaderamente importante: 
+                    el texto, la legibilidad y el placer de compartir notas digitales.
+                </p>
+
+                <div class="post-footer">
+                    <p><strong>¿Quieres estar en contacto?</strong></p>
+                    <p>Puedes seguir mis proyectos en GitHub o escribirme a través del formulario de contacto.</p>
+                    <ul class="post-footer-links">
+                        <li><a href="https://github.com/bonzoycv" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="/noplay/contacto.html">Contacto</a></li>
+                        <li><a href="/feed.xml">RSS Feed</a></li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 No Play Games — Mis notas digitales.</p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            if (!toggle) return;
+            const html = document.documentElement;
+            
+            toggle.addEventListener('click', function() {
+                const current = html.getAttribute('data-theme') || 'dark';
+                const next = current === 'light' ? 'dark' : 'light';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+                localStorage.setItem('theme_v2', 'user_choice');
+            });
+        })();
+    </script>
+</body>
+
+</html>

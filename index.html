@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+        (function() {
+            let saved = localStorage.getItem('theme_v2');
+            if (!saved) {
+                localStorage.setItem('theme', 'dark');
+                localStorage.setItem('theme_v2', 'dark');
+                saved = 'dark';
+            } else {
+                saved = localStorage.getItem('theme') || 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', saved);
+        })();
+    </script>
+    <meta name="description" content="No Play Games — Mis notas digitales.">
+    <title>No Play Games — Mis notas digitales</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="icon" type="image/x-icon" href="/sources/favicon-32x32.png">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="No Play Games — Mis notas digitales" />
+    <meta property="og:url" content="https://www.noplaygames.dev/" />
+    <meta property="og:description" content="Mis notas digitales sobre Linux, servidores, terminal y cacharreo digital." />
+    
+    <link rel="alternate" type="application/rss+xml" title="No Play Games RSS Feed" href="/feed.xml" />
+    <link rel="canonical" href="https://www.noplaygames.dev/index.html">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <nav>
+                    <ul>
+                        <li><a href="/index.html" class="active">Inicio</a></li>
+                        <li><a href="/noplay/proyectos.html">Proyectos</a></li>
+                        <li><a href="/noplay/perfil.html">Sobre Mí</a></li>
+                        <li><a href="/noplay/contacto.html">Contacto</a></li>
+                        <li><a href="/feed.xml">RSS</a></li>
+                        <li><a href="https://github.com/bonzoycv" target="_blank" rel="noopener">GitHub</a></li>
+                    </ul>
+                </nav>
+
+                <button id="theme-toggle" aria-label="Cambiar tema">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
+            </div>
+
+            <div class="site-branding">
+                <a href="/index.html" class="brand-title-wrap">
+                    <img src="/sources/no_play_logo.webp" alt="Logo de No Play Games" class="site-logo" />
+                    <span class="site-title">No Play Games</span>
+                </a>
+                <p class="site-tagline">Mis notas digitales.</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="section-header">
+                <h2>Publicaciones Recientes</h2>
+            </div>
+
+            <ul class="post-list">
+
+                <li class="post-item">
+                    <span class="post-meta">2026-03-12</span>
+                    <h3 class="post-title"><a href="/noplay/proyectos/my-bash.html">Mi terminal, paso a paso</a></h3>
+                    <p class="post-desc">Cómo voy construyendo y optimizando mi flujo de trabajo en la terminal.</p>
+                </li>
+
+                <li class="post-item">
+                    <span class="post-meta">2026-03-09</span>
+                    <h3 class="post-title"><a href="/noplay/post/bat.html">bat: un cat con superpoderes</a></h3>
+                    <p class="post-desc">Reemplazo moderno de cat con syntax highlighting, numeración de líneas e integración con git.</p>
+                </li>
+
+                <li class="post-item">
+                    <span class="post-meta">2026-02-28</span>
+                    <h3 class="post-title"><a href="/noplay/post/cd-ls-automatico.html">Como modificar 'cd' para mostrar ls de manera automática</a></h3>
+                    <p class="post-desc">Pequeño truco de shell en Bash para listar directorios automáticamente al navegar.</p>
+                </li>
+
+                <li class="post-item">
+                    <span class="post-meta">2026-02-15</span>
+                    <h3 class="post-title"><a href="/noplay/post/alias-vs-funcion.html">Alias vs función en Bash</a></h3>
+                    <p class="post-desc">Criterios sencillos para determinar cuándo definir un alias o construir una función en el script de arranque.</p>
+                </li>
+
+                <li class="post-item">
+                    <span class="post-meta">2026-01-20</span>
+                    <h3 class="post-title"><a href="/noplay/post/fhistory-alias.html">Alias fh: buscar en el historial con fzf</a></h3>
+                    <p class="post-desc">Encuentra y reutiliza cualquier comando pasado en la terminal al instante usando fzf.</p>
+                </li>
+
+                <li class="post-item">
+                    <span class="post-meta">2025-11-10</span>
+                    <h3 class="post-title"><a href="/noplay/post/nano-config.html">Configurando .nanorc para edición rápida</a></h3>
+                    <p class="post-desc">Ajustes básicos y sintaxis para trabajar cómodamente en la terminal sin complicaciones.</p>
+                </li>
+
+            </ul>
+
+            <div class="pagination">
+                <span class="page-btn disabled">&larr; Anteriores</span>
+                <a href="page2.html" class="page-btn">Siguientes &rarr;</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 No Play Games — Mis notas digitales.</p>
+        </div>
+    </footer>
+
+    <!-- Script de alternancia de tema -->
+    <script>
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            if (!toggle) return;
+            const html = document.documentElement;
+            
+            toggle.addEventListener('click', function() {
+                const current = html.getAttribute('data-theme') || 'dark';
+                const next = current === 'light' ? 'dark' : 'light';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+                localStorage.setItem('theme_v2', 'user_choice');
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

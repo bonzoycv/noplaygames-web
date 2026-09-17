@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    const saved = localStorage.getItem('theme');
+    const theme = saved ? saved : 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+  </script>
+  <title>No Play Games — Proyectos</title>
+  <meta name="description" content="Proyectos de código abierto, scripts y notas digitales.">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/x-icon" href="/sources/favicon-32x32.png">
+  <link rel="canonical" href="https://www.noplaygames.dev/noplay/proyectos.html">
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <div class="header-top">
+        <nav>
+          <ul>
+            <li><a href="/index.html">Inicio</a></li>
+            <li><a href="/noplay/proyectos.html" class="active">Proyectos</a></li>
+            <li><a href="/noplay/perfil.html">Sobre Mí</a></li>
+            <li><a href="/noplay/contacto.html">Contacto</a></li>
+            <li><a href="/feed.xml">RSS</a></li>
+            <li><a href="https://github.com/bonzoycv" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </nav>
+
+        <button id="theme-toggle" aria-label="Cambiar tema">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+
+      <div class="site-branding">
+        <a href="/index.html" class="brand-title-wrap">
+          <img src="/sources/no_play_logo.webp" alt="Logo de No Play Games" class="site-logo" />
+          <span class="site-title">No Play Games</span>
+        </a>
+        <p class="site-tagline">Mis notas digitales.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="section-header">
+        <h2>Proyectos & Apuntes</h2>
+      </div>
+
+      <ul class="post-list">
+        <li class="post-item">
+          <span class="post-meta">Terminal & Workflow</span>
+          <h3 class="post-title"><a href="/noplay/proyectos/my-bash.html">Mi terminal, paso a paso</a></h3>
+          <p class="post-desc">Serie donde documento cómo construyo y adapto mi flujo de trabajo en la terminal.</p>
+        </li>
+
+        <li class="post-item">
+          <span class="post-meta">Configuraciones</span>
+          <h3 class="post-title"><a href="https://github.com/bonzoycv" target="_blank" rel="noopener">Linux Dotfiles en GitHub &rarr;</a></h3>
+          <p class="post-desc">Configuraciones personales para Bash, Nano, utilidades de terminal y scripts de automatización.</p>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 No Play Games — Mis notas digitales.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+      const html = document.documentElement;
+      
+      toggle.addEventListener('click', function() {
+        const current = html.getAttribute('data-theme') || 'dark';
+        const next = current === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    })();
+  </script>
+</body>
+</html>
