@@ -13,3 +13,5 @@ deploy.sh
 # Ignorar la carpeta temporal de staging (si se crea localmente)
 sitio_staging/
 mkedit.txt
+public/
+public/

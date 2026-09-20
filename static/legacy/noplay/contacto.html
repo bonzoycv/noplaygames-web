@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    const saved = localStorage.getItem('theme');
+    const theme = saved ? saved : 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+  </script>
+  <title>No Play Games — Contacto</title>
+  <meta name="description" content="Ponte en contacto conmigo. Envíame tus dudas, sugerencias o comentarios.">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/x-icon" href="/sources/favicon-32x32.png">
+  <link rel="canonical" href="https://www.noplaygames.dev/noplay/contacto.html">
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <div class="header-top">
+        <nav>
+          <ul>
+            <li><a href="/index.html">Inicio</a></li>
+            <li><a href="/noplay/proyectos.html">Proyectos</a></li>
+            <li><a href="/noplay/perfil.html">Sobre Mí</a></li>
+            <li><a href="/noplay/contacto.html" class="active">Contacto</a></li>
+            <li><a href="/feed.xml">RSS</a></li>
+            <li><a href="https://github.com/bonzoycv" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </nav>
+
+        <button id="theme-toggle" aria-label="Cambiar tema">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+
+      <div class="site-branding">
+        <a href="/index.html" class="brand-title-wrap">
+          <img src="/sources/no_play_logo.webp" alt="Logo de No Play Games" class="site-logo" />
+          <span class="site-title">No Play Games</span>
+        </a>
+        <p class="site-tagline">Mis notas digitales.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <article class="post-content">
+        <header class="post-header">
+          <h1>Contacto</h1>
+        </header>
+
+        <p>¿Tienes alguna sugerencia, duda o simplemente quieres saludar? Envíame un mensaje directo.</p>
+
+        <form action="https://formsubmit.co/bonzoycv@yandex.com" method="POST" class="contact-form">
+          <input type="hidden" name="_subject" value="Nuevo mensaje desde No Play Games!">
+          <input type="hidden" name="_next" value="https://www.noplaygames.dev/index.html">
+          <input type="hidden" name="_captcha" value="false">
+          
+          <div style="display:none;">
+            <input type="text" name="_honey">
+          </div>
+
+          <label for="name">Nombre / Alias</label>
+          <input type="text" name="name" id="name" placeholder="Tu nombre" required>
+
+          <label for="email">Correo Electrónico</label>
+          <input type="email" name="email" id="email" placeholder="tucorreo@ejemplo.com" required>
+
+          <label for="message">Mensaje</label>
+          <textarea name="message" id="message" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+
+          <button type="submit">Enviar Mensaje</button>
+        </form>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 No Play Games — Mis notas digitales.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+      const html = document.documentElement;
+      
+      toggle.addEventListener('click', function() {
+        const current = html.getAttribute('data-theme') || 'dark';
+        const next = current === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    })();
+  </script>
+</body>
+</html>

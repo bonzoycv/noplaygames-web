@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function() {
+      let saved = localStorage.getItem('theme_v2');
+      if (!saved) {
+        localStorage.setItem('theme', 'dark');
+        localStorage.setItem('theme_v2', 'dark');
+        saved = 'dark';
+      } else {
+        saved = localStorage.getItem('theme') || 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+  <title>Alias fopen: Edición rápida — No Play Games</title>
+  <meta name="description" content="Usando fzf para encontrar y abrir archivos en Nano instantáneamente.">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/x-icon" href="/sources/favicon-32x32.png">
+
+  <meta property="og:title" content="Alias fopen: Edición rápida — No Play Games" />
+  <meta property="og:description" content="Usando fzf para encontrar y abrir archivos en Nano instantáneamente." />
+  <meta property="og:url" content="https://www.noplaygames.dev/noplay/post/fopen-alias.html" />
+  <meta property="og:type" content="article" />
+
+  <link rel="canonical" href="https://www.noplaygames.dev/noplay/post/fopen-alias.html">
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <div class="header-top">
+        <nav>
+          <ul>
+            <li><a href="/index.html">Inicio</a></li>
+            <li><a href="/noplay/proyectos.html">Proyectos</a></li>
+            <li><a href="/noplay/perfil.html">Sobre Mí</a></li>
+            <li><a href="/noplay/contacto.html">Contacto</a></li>
+            <li><a href="/feed.xml">RSS</a></li>
+            <li><a href="https://github.com/bonzoycv" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </nav>
+
+        <button id="theme-toggle" aria-label="Cambiar tema">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+
+      <div class="site-branding">
+        <a href="/index.html" class="brand-title-wrap">
+          <img src="/sources/no_play_logo.webp" alt="Logo de No Play Games" class="site-logo" />
+          <span class="site-title">No Play Games</span>
+        </a>
+        <p class="site-tagline">Mis notas digitales.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <article class="post-content">
+        <header class="post-header">
+          <h1>Alias fopen: Edición rápida</h1>
+          <span class="post-meta">Publicado en 2025</span>
+        </header>
+
+        <p>
+          Para abrir archivos rápidamente en el editor Nano sin tener que escribir su ruta completa:
+        </p>
+
+        <pre><code>fopen() {
+  local file
+  file=$(find . -maxdepth 4 -not -path '*/.*' -type f 2>/dev/null | fzf)
+  [ -n "$file" ] && nano "$file"
+}</code></pre>
+
+        <h2>Uso</h2>
+        <p>
+          Escribiendo <code>fopen</code> se abre la lista interactiva de archivos. Al seleccionar uno y presionar Enter se abre de inmediato en Nano. Si cancelas con <code>Esc</code>, la función sale limpiamente sin abrir una pantalla en blanco.
+        </p>
+
+        <div style="margin-top: 2.5rem;">
+          <script src="https://giscus.app/client.js"
+            data-repo="bonzoycv/noplaygames-comentarios"
+            data-repo-id="R_kgDOQlhrmQ"
+            data-category="General"
+            data-category-id="DIC_kwDOQlhrmc4CzlNQ"
+            data-mapping="url"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="noborder_dark"
+            data-lang="es"
+            crossorigin="anonymous"
+            async>
+          </script>
+        </div>
+
+        <div class="post-footer">
+          <p><strong>¿Te ha gustado esta nota?</strong></p>
+          <p>Puedes dejar tu comentario o conectar a través de mis redes:</p>
+          <ul class="post-footer-links">
+            <li><a href="https://github.com/bonzoycv" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="/noplay/contacto.html">Contacto</a></li>
+            <li><a href="/feed.xml">RSS Feed</a></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 No Play Games — Mis notas digitales.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+      const html = document.documentElement;
+
+      toggle.addEventListener('click', function () {
+        const current = html.getAttribute('data-theme') || 'dark';
+        const next = current === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        localStorage.setItem('theme_v2', 'user_choice');
+      });
+    })();
+  </script>
+
+</body>
+
+</html>
