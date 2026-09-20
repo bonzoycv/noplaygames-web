@@ -1,70 +1,48 @@
-# No Play Games — Blog personal
+# No Play Games — Blog Personal & Diario Digital
 
-Este repositorio contiene el código fuente de mi sitio web personal:
-**No Play Games**.
+Este repositorio contiene el código fuente de mi blog personal y jardín digital: **No Play Games**[cite: 1, 11]. 
 
-Es un blog técnico con enfoque personal, donde documento mi proceso de aprendizaje
-en Linux, el uso de la terminal y la construcción de un flujo de trabajo simple y mantenible.
-
-No es un blog de expertos.
-Es un registro honesto de lo que uso y entiendo.
+Es un espacio personal donde documento mi proceso de aprendizaje en Linux, el uso de la terminal, la administración de mi Homelab y la construcción de un flujo de trabajo simple y mantenible[cite: 1, 11]. No es un blog para expertos, sino un registro honesto de las herramientas que uso y entiendo[cite: 11].
 
 ---
 
-## Filosofía
+##  Filosofía
 
-- KISS (Keep It Simple, Stupid)
-- HTML y CSS escritos a mano
-- Sin frameworks
-- Sin JavaScript pesado
-- Sin automatizaciones innecesarias
-
-Prefiero entender cada línea antes que depender de herramientas que no controlo.
+* **KISS (Keep It Simple, Stupid):** Mantener el sistema lo más sencillo y liviano posible[cite: 1, 11].
+* **Sin sobreingeniería:** Generación estática súper rápida usando Hugo[cite: 1].
+* **Flujo basado en texto plano:** Todo se redacta en Markdown desde la terminal o editores de texto[cite: 1].
+* **Control total:** Alojo mi propio sitio directamente en mi servidor casero (Homelab) en lugar de depender de servicios de terceros[cite: 1].
 
 ---
 
-## Contenido
+##  Stack Tecnológico
 
-En el blog escribo sobre:
-
-- Uso diario de Linux
-- Terminal y Bash
-- Alias y funciones pequeñas pero útiles
-- Configuración de Nano
-- Scripts simples para tareas repetitivas
-- Organización de proyectos
-- Documentación personal (jardín digital)
-
-Todo lo que aparece publicado es algo que realmente uso.
+* **Generador de Sitio Estático (SSG):** [Hugo](https://gohugo.io/) (Tema: [PaperMod](https://github.com/adityatelange/hugo-PaperMod))[cite: 1, 4]
+* **Escritorio Principal:** PikaOS (Debian + GNOME)[cite: 1, 11]
+* **Infraestructura / Homelab:** Servidor casero con Proxmox VE + Docker (Nginx)[cite: 1, 8, 11]
+* **Red / Exposición:** Cloudflare Tunnels (HTTPS automático sin abrir puertos)[cite: 8]
 
 ---
 
-## Serie destacada
+##  Contenido
 
-**Mi terminal, paso a paso**
+En este jardín digital escribo sobre:
 
-Una serie de artículos donde documento cómo voy construyendo mi flujo de trabajo
-en la terminal, partiendo desde lo más básico y añadiendo mejoras pequeñas y comprensibles.
-
----
-
-## Estado del proyecto
-
-El sitio está en evolución constante.
-Los artículos pueden actualizarse, reorganizarse o reescribirse conforme aprendo cosas nuevas.
-
-Este repositorio no pretende ser una plantilla ni un producto final,
-sino una base sencilla y funcional.
+* **Homelab & Virtualización:** Migración de servidor único a Proxmox VE, LXCs y contenedores Docker (Pi-hole, Jellyfin, etc.)[cite: 8, 11].
+* **Experiencia en Linux:** Mi regreso a la base Debian usando PikaOS en mi máquina de uso diario[cite: 1, 11].
+* **Terminal & Bash:** Configuración, alias, utilidades CLI (`fzf`, `bat`) y automatizaciones simples[cite: 11].
+* **Sección Archivo / Legacy:** Registro histórico del blog y configuraciones previas[cite: 8, 11].
 
 ---
 
-## Enlace al sitio
+##  Enlace al Sitio
 
-https://www.noplaygames.dev
+* **Dirección actual:** [https://noplaygames.bonzoycv.org](https://noplaygames.bonzoycv.org)[cite: 1]
+
+*(Redirigido desde mi antiguo dominio `.dev`)*[cite: 1]
 
 ---
 
-## Licencia
+##  Licencia
 
-El contenido del blog es personal.
-El código puede reutilizarse libremente para fines educativos o personales.
+El contenido de las entradas y artículos es personal[cite: 11]. El código de configuración es libre para reutilizarse con fines educativos o personales[cite: 11].
