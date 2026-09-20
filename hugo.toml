@@ -1,0 +1,26 @@
+baseURL = 'https://noplaygames.bonzoycv.org/'
+locale = 'es-es'
+title = 'NoPlayGames | Diario & Homelab'
+theme = 'PaperMod'
+
+[params]
+  defaultTheme = 'dark'
+  disableThemeToggle = false
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+
+  [params.homeInfoParams]
+    Title = "Agenda & Jardín Digital"
+    Content = "Notas personales, experimentos en Linux (PikaOS) y bitácora de mi Homelab."
+
+[[menu.main]]
+  name = "Inicio"
+  url = "/"
+  weight = 10
+
+[[menu.main]]
+  name = "Archivo / Legacy"
+  url = "/posts/legacy/"
+  weight = 20
