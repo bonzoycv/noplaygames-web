@@ -44,3 +44,5 @@ Allow: /
 #User-agent: Webzio-Extended
 #User-agent: YouBot
 #Disallow: /
+
+Sitemap: https://noplaygames.bonzoycv.org/sitemap.xml
